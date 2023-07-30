@@ -5,12 +5,18 @@ import Wrapper from "./pages/Wrapper";
 import Title from "./pages/Title";
 import Team from "./pages/Team";
 import { Page } from "./types";
+import Solution from "./pages/Solution";
+import Projects from "./pages/Projects";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
-  const pageNames = ["Title", "Team"];
   const pages: Page[] = [
     { title: "Title", element: <Title /> },
+    { title: "Problems", element: <Problems /> },
+    { title: "Solution", element: <Solution /> },
     { title: "Team", element: <Team /> },
+    { title: "Pojects", element: <Projects /> },
+    { title: "ContactUs", element: <ContactUs /> },
   ];
 
   const [targetIndex, setTargerIndex] = useState<number | undefined>(undefined);
