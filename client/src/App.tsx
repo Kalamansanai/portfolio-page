@@ -8,6 +8,7 @@ import { Page } from "./types";
 import Solution from "./pages/Solution";
 import Projects from "./pages/Projects";
 import ContactUs from "./pages/ContactUs";
+import ScrollToTopButton from "./OtherComponents/ScrollToTop";
 
 function App() {
   const pages: Page[] = [
@@ -52,6 +53,8 @@ function App() {
             child={page.element}
           />
         ))}
+
+      <ScrollToTopButton />
     </div>
   );
 }
