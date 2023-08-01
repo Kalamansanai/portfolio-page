@@ -9,6 +9,7 @@ import Solution from "./pages/Solution";
 import Projects from "./pages/Projects";
 import ContactUs from "./pages/ContactUs";
 import ScrollToTopButton from "./OtherComponents/ScrollToTop";
+import "./App.css";
 
 function App() {
   const pages: Page[] = [
@@ -31,7 +32,7 @@ function App() {
   }, [targetIndex, scroll]);
 
   return (
-    <div>
+    <div className="mainBody">
       {pages &&
         pages.map((page, index) => (
           <Button
@@ -47,11 +48,7 @@ function App() {
 
       {pages &&
         pages.map((page, index) => (
-          <Wrapper
-            key={index}
-            reference={targetIndex === index ? target : null}
-            child={page.element}
-          />
+          <Wrapper key={index} reference={targetIndex === index ? target : null} child={page.element} />
         ))}
 
       <ScrollToTopButton />

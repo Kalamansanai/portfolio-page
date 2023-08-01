@@ -7,7 +7,7 @@ type Props = {
 
 function Wrapper({ reference, child }: Props) {
   return (
-    <div ref={reference} style={{ border: "2px solid blue", height: "100vh" }}>
+    <div ref={reference} style={{ border: "2px solid blue", height: "100vh", padding: "10px" }}>
       {child}
     </div>
   );
