@@ -37,6 +37,7 @@ function App() {
       <Grid display="flex" flexDirection="row" justifyContent="center">
         <Navbar
           pages={pages}
+          targetIndex={targetIndex}
           setTargetIndex={setTargetIndex}
           scroll={scroll}
           setScroll={setScroll}
