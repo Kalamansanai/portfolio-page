@@ -10,18 +10,19 @@ import Projects from "./pages/Projects";
 import ContactUs from "./pages/ContactUs";
 import ScrollToTopButton from "./OtherComponents/ScrollToTop";
 import "./App.css";
+import Navbar from "./OtherComponents/Navbar";
 
 function App() {
   const pages: Page[] = [
     { title: "Title", element: <Title /> },
-    { title: "Problems", element: <Problems /> },
-    { title: "Solution", element: <Solution /> },
-    { title: "Team", element: <Team /> },
-    { title: "Pojects", element: <Projects /> },
-    { title: "ContactUs", element: <ContactUs /> },
+    { title: "Miért mi ?", element: <Problems /> },
+    { title: "Megoldásaink", element: <Solution /> },
+    { title: "Munkáink", element: <Projects /> },
+    { title: "Rólunk", element: <Team /> },
+    { title: "Kapcsolat", element: <ContactUs /> },
   ];
 
-  const [targetIndex, setTargerIndex] = useState<number | undefined>(undefined);
+  const [targetIndex, setTargetIndex] = useState<number | undefined>(undefined);
   const target = useRef<HTMLDivElement>(null);
   const [scroll, setScroll] = useState(false);
 
@@ -32,26 +33,27 @@ function App() {
   }, [targetIndex, scroll]);
 
   return (
-    <div className="mainBody">
+    <div>
+      <Grid display="flex" flexDirection="row" justifyContent="center">
+        <Navbar
+          pages={pages}
+          targetIndex={targetIndex}
+          setTargetIndex={setTargetIndex}
+          scroll={scroll}
+          setScroll={setScroll}
+        />
+      </Grid>
+
       {pages &&
         pages.map((page, index) => (
-          <Button
+          <Wrapper
             key={index}
-            onClick={() => {
-              setTargerIndex(index);
-              setScroll(!scroll);
-            }}
-          >
-            {page.title}
-          </Button>
+            reference={targetIndex === index ? target : null}
+            child={page.element}
+          />
         ))}
 
-      {pages &&
-        pages.map((page, index) => (
-          <Wrapper key={index} reference={targetIndex === index ? target : null} child={page.element} />
-        ))}
-
-      <ScrollToTopButton />
+      <ScrollToTopButton setTargetIndex={setTargetIndex} />
     </div>
   );
 }

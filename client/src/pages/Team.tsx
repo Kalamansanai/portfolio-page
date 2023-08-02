@@ -75,7 +75,7 @@ function Team() {
         transition: "opacity 1s ease",
       }}
     >
-      <Typography variant="h4" sx={{ color: " #fff", paddingBottom: "5px" }}>
+      <Typography variant="h4" sx={{ color: " #FFFFC0", paddingBottom: "5px" }}>
         Rólunk
       </Typography>
       <Box
@@ -97,7 +97,7 @@ function Team() {
             display: "flex",
           }}
         >
-          <ArrowBackIosNewRoundedIcon sx={{ color: "#fff" }} />
+          <ArrowBackIosNewRoundedIcon sx={{ color: "#FFFFC0" }} />
         </IconButton>
         <Box sx={{ paddingLeft: "10px", paddingRight: "10px" }}>
           <img
@@ -136,7 +136,7 @@ function Team() {
           }}
         >
           {teamMembers.map((member, i) => (
-            <>
+            <div key={i}>
               <Paper>
                 <div
                   style={{
@@ -161,7 +161,7 @@ function Team() {
                   />
                 </div>
               </Paper>
-            </>
+            </div>
           ))}
         </Carousel>
 
@@ -188,7 +188,7 @@ function Team() {
             display: "flex",
           }}
         >
-          <ArrowForwardIosIcon sx={{ color: "#fff" }} />
+          <ArrowForwardIosIcon sx={{ color: "#FFFFC0" }} />
         </IconButton>
       </Box>
       <Box
@@ -226,10 +226,10 @@ function Team() {
           marginTop: "10px",
           fontSize: "20px",
           fontWeight: "700",
-          color: "#fff",
+          color: "#FFFFC0",
         }}
       >
-        {teamMembers[currentIndex].name}
+        {teamMembers[currentIndex].name}{" "}
       </Typography>
       <Typography
         sx={{
@@ -237,7 +237,7 @@ function Team() {
           margin: "0px",
           whiteSpace: "pre-wrap",
           textAlign: "center",
-          color: "#fff",
+          color: "#FFFFC0",
         }}
       >
         {teamMembers[currentIndex].description}
