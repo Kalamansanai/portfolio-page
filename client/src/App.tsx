@@ -16,7 +16,7 @@ function App() {
   const pages: Page[] = [
     { title: "Title", element: <Title /> },
     { title: "Miért mi ?", element: <Problems /> },
-    { title: "Megoldásaink", element: <Problems /> },
+    { title: "Megoldásaink", element: <Solution /> },
     { title: "Munkáink", element: <Projects /> },
     { title: "Rólunk", element: <Team /> },
     { title: "Kapcsolat", element: <ContactUs /> },
