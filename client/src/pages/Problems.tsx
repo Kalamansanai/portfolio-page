@@ -7,11 +7,10 @@ import cloud2 from "../images/cloud2.png";
 import "../App.css";
 import { useState } from "react";
 import { Problem } from "../types";
+import { backgroundColor, textColor } from "../config";
 
 export default function Problems() {
   const [content, setContent] = useState<string | null>(null);
-  const text_color = "#e5e5e5";
-  const background_color = "0c0c0c";
 
   const problems: Problem[] = [
     {
@@ -50,7 +49,6 @@ export default function Problems() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "flex-start",
-        // padding: 2,
       }}
     >
       <Box
@@ -58,10 +56,11 @@ export default function Problems() {
         flexDirection="row"
         justifyContent="flex-end"
         sx={{ width: "100%" }}
+        marginTop="50px"
       >
         <Typography
           variant="h2"
-          color={text_color}
+          color={textColor}
           fontWeight="bold"
           marginBottom="20px"
           marginRight="20px"
@@ -97,7 +96,7 @@ export default function Problems() {
         </Grid>
         <Grid
           sx={{
-            backgroundColor: background_color,
+            backgroundColor: backgroundColor,
             height: "80%",
             width: "40%",
             borderRadius: "25px",
@@ -107,7 +106,7 @@ export default function Problems() {
           alignItems="center"
           padding="10px"
         >
-          <Typography variant="h5" color={text_color}>
+          <Typography variant="h5" color={textColor}>
             {content}
           </Typography>
         </Grid>

@@ -10,8 +10,9 @@ export default function Solution() {
     <Grid
       display="flex"
       flexDirection="row"
-      height="100%"
+      height="90%"
       width="100%"
+
       // sx={{ border: "2px solid red" }}
     >
       <Grid
@@ -21,6 +22,7 @@ export default function Solution() {
         height="100%"
         width="50%"
         ml="25px"
+        mt="50px"
         // sx={{ border: "2px solid blue" }}
       >
         <TextBox
@@ -61,6 +63,7 @@ export default function Solution() {
         justifyContent="space-around"
         height="100%"
         width="50%"
+        mt="50px"
         // sx={{ border: "2px solid blue" }}
       >
         <ImageBox title="test" imageSrc={placeholder} />
