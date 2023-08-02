@@ -240,7 +240,7 @@ function Team() {
           color: "#FFFFC0",
         }}
       >
-        {teamMembers[currentIndex].description}{" "}
+        {teamMembers[currentIndex].description}
       </Typography>
     </Box>
   );
