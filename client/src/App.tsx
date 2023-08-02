@@ -53,7 +53,7 @@ function App() {
           />
         ))}
 
-      <ScrollToTopButton />
+      <ScrollToTopButton setTargetIndex={setTargetIndex} />
     </div>
   );
 }

@@ -3,10 +3,15 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Box, Fab, Zoom, useScrollTrigger } from "@mui/material";
 import React from "react";
 
-const ScrollToTopButton: React.FC = () => {
+type Props = {
+  setTargetIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
+};
+
+const ScrollToTopButton = ({ setTargetIndex }: Props) => {
   const trigger = useScrollTrigger({ disableHysteresis: true });
 
   const scrollToTop = () => {
+    setTargetIndex(0);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
