@@ -6,4 +6,5 @@ export interface Page {
 export interface Problem {
   problem: string;
   solution: string;
+  image: string;
 }
