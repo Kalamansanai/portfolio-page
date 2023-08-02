@@ -24,12 +24,16 @@ function Team() {
     // Here we could add Petya xd
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
-  const prevIndex = (currentIndex - 1 + teamMembers.length) % teamMembers.length;
+  const prevIndex =
+    (currentIndex - 1 + teamMembers.length) % teamMembers.length;
   const nextIndex = (currentIndex + 1) % teamMembers.length;
   const [autoPlayActive, setAutoPlayActive] = useState(true);
   const [isVisible, setIsVisible] = useState(true);
 
-  const handleChange = (nextIndex: number | undefined, previousIndex: number | undefined) => {
+  const handleChange = (
+    nextIndex: number | undefined,
+    previousIndex: number | undefined
+  ) => {
     if (nextIndex !== undefined) {
       setIsVisible(false);
       setTimeout(() => {
@@ -217,13 +221,26 @@ function Team() {
           ></div>
         ))}
       </Box>
-      <Typography sx={{ marginTop: "10px", fontSize: "20px", fontWeight: "700", color: "#fff" }}>
-        {teamMembers[currentIndex].name}{" "}
+      <Typography
+        sx={{
+          marginTop: "10px",
+          fontSize: "20px",
+          fontWeight: "700",
+          color: "#fff",
+        }}
+      >
+        {teamMembers[currentIndex].name}
       </Typography>
       <Typography
-        sx={{ maxWidth: "250px", margin: "0px", whiteSpace: "pre-wrap", textAlign: "center", color: "#fff" }}
+        sx={{
+          maxWidth: "250px",
+          margin: "0px",
+          whiteSpace: "pre-wrap",
+          textAlign: "center",
+          color: "#fff",
+        }}
       >
-        {teamMembers[currentIndex].description}{" "}
+        {teamMembers[currentIndex].description}
       </Typography>
     </Box>
   );
