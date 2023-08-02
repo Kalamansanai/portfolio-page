@@ -5,6 +5,8 @@ import { Box, Typography, Button } from "@mui/material";
 import video from "../images/video2.mp4";
 
 const Title: React.FC = () => {
+  const text_color = "#e5e5e5";
+
   return (
     <Box
       sx={{
@@ -50,7 +52,7 @@ const Title: React.FC = () => {
       </video>
       <Typography
         variant="h2"
-        sx={{ fontWeight: "bold", mb: 4, color: "#FFFFC0" }}
+        sx={{ fontWeight: "bold", mb: 4, color: text_color }}
       >
         Smart Camera Systems
         <br />
@@ -59,7 +61,7 @@ const Title: React.FC = () => {
 
       <Typography
         variant="body1"
-        sx={{ fontSize: 18, maxWidth: 600, mb: 4, color: "#FFFFC0" }}
+        sx={{ fontSize: 18, maxWidth: 600, mb: 4, color: text_color }}
       >
         Welcome to BME-I4 Vision Systems, where we specialize in creating
         cutting-edge smart camera systems integrated with the power of AI and

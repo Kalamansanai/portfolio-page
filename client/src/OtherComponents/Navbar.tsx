@@ -20,6 +20,7 @@ export default function Navbar({
   setScroll,
 }: Props) {
   const [color, setColor] = useState("#2a282a");
+  const text_color = "#e5e5e5";
 
   return (
     <Box
@@ -29,7 +30,8 @@ export default function Navbar({
       alignItems="center"
       sx={{
         position: "fixed",
-        height: "7vh",
+        height: "3vh",
+        minHeight: "40px",
         width: "50%",
         backgroundColor: "#2a282a",
         borderRadius: 30,
@@ -55,11 +57,13 @@ export default function Navbar({
                   backgroundColor: "grey",
                 },
                 width: "100%",
+                height: "100%",
                 display: "flex",
                 justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              <p style={{ color: "white" }}>{page.title}</p>
+              <p style={{ color: text_color }}>{page.title}</p>
             </Box>
           );
         })}
