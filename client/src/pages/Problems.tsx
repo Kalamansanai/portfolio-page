@@ -10,6 +10,8 @@ import { Problem } from "../types";
 
 export default function Problems() {
   const [content, setContent] = useState<string | null>(null);
+  const text_color = "#e5e5e5";
+  const background_color = "0c0c0c";
 
   const problems: Problem[] = [
     {
@@ -59,7 +61,7 @@ export default function Problems() {
       >
         <Typography
           variant="h2"
-          color="#FFFFC0"
+          color={text_color}
           fontWeight="bold"
           marginBottom="20px"
           marginRight="20px"
@@ -95,7 +97,7 @@ export default function Problems() {
         </Grid>
         <Grid
           sx={{
-            backgroundColor: "#FFFFC0",
+            backgroundColor: background_color,
             height: "80%",
             width: "40%",
             borderRadius: "25px",
@@ -105,7 +107,9 @@ export default function Problems() {
           alignItems="center"
           padding="10px"
         >
-          <Typography variant="h5">{content}</Typography>
+          <Typography variant="h5" color={text_color}>
+            {content}
+          </Typography>
         </Grid>
       </Grid>
     </Box>
@@ -118,6 +122,8 @@ type Props = {
 };
 
 function Card({ problem, setContent }: Props) {
+  const text_color = "#e5e5e5";
+
   return (
     <Box
       onClick={() => setContent(problem.solution)}
@@ -127,7 +133,7 @@ function Card({ problem, setContent }: Props) {
         "&:hover": {
           cursor: "pointer",
           backgroundColor: "grey",
-          borderRadius: "30px",
+          borderRadius: "25px",
           width: "100%",
         },
         padding: "20px",
@@ -136,7 +142,7 @@ function Card({ problem, setContent }: Props) {
       flexDirection="column"
       justifyContent="center"
     >
-      <Typography color="#FFFFC0">{problem.problem}</Typography>
+      <Typography color={text_color}>{problem.problem}</Typography>
     </Box>
   );
 }
