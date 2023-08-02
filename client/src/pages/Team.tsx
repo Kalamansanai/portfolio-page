@@ -24,12 +24,16 @@ function Team() {
     // Here we could add Petya xd
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
-  const prevIndex = (currentIndex - 1 + teamMembers.length) % teamMembers.length;
+  const prevIndex =
+    (currentIndex - 1 + teamMembers.length) % teamMembers.length;
   const nextIndex = (currentIndex + 1) % teamMembers.length;
   const [autoPlayActive, setAutoPlayActive] = useState(true);
   const [isVisible, setIsVisible] = useState(true);
 
-  const handleChange = (nextIndex: number | undefined, previousIndex: number | undefined) => {
+  const handleChange = (
+    nextIndex: number | undefined,
+    previousIndex: number | undefined
+  ) => {
     if (nextIndex !== undefined) {
       setIsVisible(false);
       setTimeout(() => {
@@ -71,7 +75,7 @@ function Team() {
         transition: "opacity 1s ease",
       }}
     >
-      <Typography variant="h4" sx={{ color: " #fff", paddingBottom: "5px" }}>
+      <Typography variant="h4" sx={{ color: " #FFFFC0", paddingBottom: "5px" }}>
         Rólunk
       </Typography>
       <Box
@@ -93,7 +97,7 @@ function Team() {
             display: "flex",
           }}
         >
-          <ArrowBackIosNewRoundedIcon sx={{ color: "#fff" }} />
+          <ArrowBackIosNewRoundedIcon sx={{ color: "#FFFFC0" }} />
         </IconButton>
         <Box sx={{ paddingLeft: "10px", paddingRight: "10px" }}>
           <img
@@ -132,7 +136,7 @@ function Team() {
           }}
         >
           {teamMembers.map((member, i) => (
-            <>
+            <div key={i}>
               <Paper>
                 <div
                   style={{
@@ -157,7 +161,7 @@ function Team() {
                   />
                 </div>
               </Paper>
-            </>
+            </div>
           ))}
         </Carousel>
 
@@ -184,7 +188,7 @@ function Team() {
             display: "flex",
           }}
         >
-          <ArrowForwardIosIcon sx={{ color: "#fff" }} />
+          <ArrowForwardIosIcon sx={{ color: "#FFFFC0" }} />
         </IconButton>
       </Box>
       <Box
@@ -217,11 +221,24 @@ function Team() {
           ></div>
         ))}
       </Box>
-      <Typography sx={{ marginTop: "10px", fontSize: "20px", fontWeight: "700", color: "#fff" }}>
+      <Typography
+        sx={{
+          marginTop: "10px",
+          fontSize: "20px",
+          fontWeight: "700",
+          color: "#FFFFC0",
+        }}
+      >
         {teamMembers[currentIndex].name}{" "}
       </Typography>
       <Typography
-        sx={{ maxWidth: "250px", margin: "0px", whiteSpace: "pre-wrap", textAlign: "center", color: "#fff" }}
+        sx={{
+          maxWidth: "250px",
+          margin: "0px",
+          whiteSpace: "pre-wrap",
+          textAlign: "center",
+          color: "#FFFFC0",
+        }}
       >
         {teamMembers[currentIndex].description}{" "}
       </Typography>
