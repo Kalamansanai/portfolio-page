@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
+import { textColor } from "../config";
 
 function Team() {
   const teamMembers = [
@@ -75,7 +76,7 @@ function Team() {
         transition: "opacity 1s ease",
       }}
     >
-      <Typography variant="h4" sx={{ color: " #FFFFC0", paddingBottom: "5px" }}>
+      <Typography variant="h4" sx={{ color: textColor, paddingBottom: "5px" }}>
         Rólunk
       </Typography>
       <Box
@@ -97,7 +98,7 @@ function Team() {
             display: "flex",
           }}
         >
-          <ArrowBackIosNewRoundedIcon sx={{ color: "#FFFFC0" }} />
+          <ArrowBackIosNewRoundedIcon sx={{ color: textColor }} />
         </IconButton>
         <Box sx={{ paddingLeft: "10px", paddingRight: "10px" }}>
           <img
@@ -188,7 +189,7 @@ function Team() {
             display: "flex",
           }}
         >
-          <ArrowForwardIosIcon sx={{ color: "#FFFFC0" }} />
+          <ArrowForwardIosIcon sx={{ color: textColor }} />
         </IconButton>
       </Box>
       <Box
@@ -226,7 +227,7 @@ function Team() {
           marginTop: "10px",
           fontSize: "20px",
           fontWeight: "700",
-          color: "#FFFFC0",
+          color: textColor,
         }}
       >
         {teamMembers[currentIndex].name}{" "}
@@ -237,7 +238,7 @@ function Team() {
           margin: "0px",
           whiteSpace: "pre-wrap",
           textAlign: "center",
-          color: "#FFFFC0",
+          color: textColor,
         }}
       >
         {teamMembers[currentIndex].description}
