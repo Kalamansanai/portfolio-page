@@ -17,13 +17,22 @@ const ScrollToTopButton: React.FC = () => {
         role="presentation"
         sx={{
           position: "fixed",
-          top: 16,
+          bottom: 16,
           right: 16,
           zIndex: 1000,
           cursor: "pointer",
         }}
       >
-        <Fab color="primary" size="medium">
+        <Fab
+          color="primary"
+          size="medium"
+          sx={{
+            backgroundColor: "grey",
+            "&:hover": {
+              backgroundColor: "#2a282a",
+            },
+          }}
+        >
           <KeyboardArrowUpIcon />
         </Fab>
       </Box>
