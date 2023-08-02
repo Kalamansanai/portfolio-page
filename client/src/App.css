@@ -1,0 +1,12 @@
+body {
+  margin: 0 !important;
+  background-color: #0c0c0c;
+}
+
+.problem_paragraph {
+  /* background-color: aliceblue; */
+  border-radius: 25;
+  padding: 15px;
+  height: 130%;
+  width: 30%;
+}
