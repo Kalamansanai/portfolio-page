@@ -12,7 +12,10 @@ export default function Solution() {
       flexDirection="row"
       height="90%"
       width="100%"
-
+      sx={{
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
       // sx={{ border: "2px solid red" }}
     >
       <Grid
@@ -49,14 +52,7 @@ export default function Solution() {
             culpa qui officia deserunt mollit anim id est laborum."
         />
       </Grid>
-      <Divider
-        orientation="vertical"
-        color={textColor}
-        variant="middle"
-        flexItem
-        light
-        sx={{ margin: 5 }}
-      />
+      <Divider orientation="vertical" color={textColor} variant="middle" flexItem light sx={{ margin: 5 }} />
       <Grid
         display="flex"
         flexDirection="column"
@@ -91,13 +87,7 @@ type textProps = {
 
 function TextBox({ title, text }: textProps) {
   return (
-    <Box
-      height="30%"
-      width="100%"
-      display="flex"
-      flexDirection="column"
-      alignItems="flex-start"
-    >
+    <Box height="30%" width="100%" display="flex" flexDirection="column" alignItems="flex-start">
       <Typography variant="h3" color={textColor}>
         {title}
       </Typography>

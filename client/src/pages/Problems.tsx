@@ -1,50 +1,53 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
-//@ts-ignore
-import cloud1 from "../images/cloud1.png";
-//@ts-ignore
-import cloud2 from "../images/cloud2.png";
-
 import "../App.css";
 import { useState } from "react";
 import { Problem } from "../types";
 import { backgroundColor, textColor } from "../config";
+import React from "react";
+import { Card as MuiCard, CardContent } from "@mui/material";
 
 export default function Problems() {
   const [content, setContent] = useState<string | null>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [activeImage, setActiveImage] = useState<string | undefined>(undefined);
+  const [activeIcon, setActiveIcon] = useState<any>(null);
+  const [activeTiltle, setActiveTiltle] = useState<string | null>(null);
+  const [isFading, setIsFading] = useState(false);
 
   const problems: Problem[] = [
     {
       problem: "Túl sok a vesztesége termelés során?",
       solution:
         "Gépi látásos megoldásainkkal fel tudunk készül specifikus problémák detektálására, és jelzés küldésére ha megtörténnek. Gépi tanulásos eljárásokkal és kellő adat gyűjtésével meg tudjuk előzni a hibákat a korábbi esetekből betanított algoritmusainkkal.",
-      image: "/images/introduction-visual.png",
+      icon: "first.png",
+      tiltle: "Gépi Látás és Tanulás",
     },
     {
       problem: "Egyes folyamatokat nehéz automatizálni?",
       solution:
         "A mesterséges intelligencia és gépi tanulás segítségével olyan folyamatokat is képesek lehetünk automatizálni, amiket eddig elképzelhetetlen volt emberi beavatkozás nélkül elvégezni.",
-      image: "",
+      icon: "second.png",
+      tiltle: "Gépi Automatizálás",
     },
     {
-      problem:
-        "Van egy specifikus problémája ami egy kritikus probléma a termelési folyamat során?",
+      problem: "Van egy specifikus problémája ami egy kritikus probléma a termelési folyamat során?",
       solution:
         "Képesek vagyunk specifikálódni egy kifejezett problémára, és egy már meglévő rendszerhez adaptálni az elkészülő megoldásunkat.",
-      image: "",
+      icon: "third.png",
+      tiltle: "Specifikus Megoldásások",
     },
     {
       problem: "Hatalmas költség egy ilyen rendszer, és nem elég flexibilis?",
       solution:
         "Versenytársainkkal szemben mi olcsó eszközöket használunk, célunk hogy az eszközök modulárisak, pótolhatóak legyenek. Ügyfeleink kiválaszthatják hogy mely eszközöket szeretnék a rendszerükben használni, áruk, teljesítményük és egyéb paramétereik alapján mérlegelve.",
-      image: "",
+      icon: "fourth.png",
+      tiltle: "Olcsóbb megoldások",
     },
     {
       problem: "Egyedi igényei vannak?",
       solution:
         "Olyan szoftver rendszereket és algoritmusokat készítünk amik az ügyfeleink speciális igényeire vannak szabva, az ők felhasználási igényeiket tartjuk szem előtt a fejlesztés közben.",
-      image: "",
+      icon: "fifth.png",
+      tiltle: "Ügyfélközpontú Algoritmusok",
     },
   ];
 
@@ -56,6 +59,10 @@ export default function Problems() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "flex-start",
+        backgroundImage: "url(/images/Untitled-1.png)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <Box
@@ -65,14 +72,8 @@ export default function Problems() {
         sx={{ width: "100%" }}
         marginTop="50px"
       >
-        <Typography
-          variant="h2"
-          color={textColor}
-          fontWeight="bold"
-          marginBottom="20px"
-          marginRight="20px"
-        >
-          Miért válasszon minket?
+        <Typography variant="h2" color={textColor} fontWeight="bold" marginBottom="20px" marginRight="20px">
+          Miért válasszon minket<span style={{ color: "#0000ff" }}>?</span>
         </Typography>
       </Box>
       <Grid
@@ -81,14 +82,12 @@ export default function Problems() {
         justifyContent="space-around"
         sx={{ height: "100%", width: "100%" }}
       >
-        {/* <Typography variant="h1"></Typography> */}
         <Grid
           display="flex"
           flexDirection="column"
           sx={{
             height: "80%",
             width: "40%",
-            border: "2px solid #0000FF",
             borderRadius: "25px",
           }}
         >
@@ -100,9 +99,14 @@ export default function Problems() {
               isLast={index === problems.length - 1}
               isActive={index === activeIndex}
               onClick={() => {
-                setContent(element.solution);
+                setIsFading(true);
                 setActiveIndex(index);
-                setActiveImage(element.image || undefined);
+                setTimeout(() => {
+                  setContent(element.solution);
+                  setActiveIcon(element.icon || undefined);
+                  setActiveTiltle(element.tiltle);
+                  setIsFading(false);
+                }, 500);
               }}
             />
           ))}
@@ -113,46 +117,51 @@ export default function Problems() {
             height: "80%",
             width: "40%",
             borderRadius: "25px",
-            flexDirection: "column",
             display: "flex",
+            flexDirection: "column",
+            padding: "10px",
+            justifyContent: "center",
+            alignItems: "center",
           }}
-          padding="10px"
         >
-          <Box
+          <MuiCard
+            elevation={3}
             sx={{
-              flex: "1",
               display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "20px",
+              backgroundColor: "white",
+              borderRadius: "25px",
+              border: "4px solid #0000FF",
+              opacity: isFading ? 0 : 1,
+              transition: "opacity 0.5s ease",
             }}
           >
-            <Typography
-              variant="h5"
-              color={textColor}
-              textAlign="left"
-              sx={{ lineHeight: "1.5" }}
+            <CardContent
+              sx={{
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                display: "flex",
+                opacity: isFading ? 0 : 1,
+                transition: "opacity 0.3s ease",
+              }}
             >
-              {content}
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              flex: "1",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            {activeImage && (
               <img
-                src={activeImage}
-                alt="AI"
-                style={{ maxWidth: "250px", maxHeight: "250px" }}
-              />
-            )}
-          </Box>
+                src={`/images/${activeIcon}`}
+                height={activeIcon === "fourth.png" ? 50 : 70}
+                width={activeIcon === "fourth.png" ? 50 : 70}
+              ></img>
+              <Typography
+                variant="h4"
+                color={"blue"}
+                sx={{ fontWeight: "600", paddingTop: "5px", paddingBottom: "5px" }}
+              >
+                {activeTiltle}{" "}
+              </Typography>
+              <Typography variant="h5" color={backgroundColor} sx={{ textAlign: "justify" }}>
+                {content}
+              </Typography>
+            </CardContent>
+          </MuiCard>
         </Grid>
       </Grid>
     </Box>
@@ -168,8 +177,6 @@ type Props = {
 };
 
 function Card({ problem, setContent, isLast, isActive, onClick }: Props) {
-  const text_color = "#e5e5e5";
-
   return (
     <Box
       onClick={onClick}
@@ -181,19 +188,23 @@ function Card({ problem, setContent, isLast, isActive, onClick }: Props) {
         marginBottom: isLast ? "0px" : "15px",
         maxHeight: "100%",
         overflow: "auto",
-        backgroundColor: isActive ? "#6666ff" : "transparent",
         borderRadius: "25px",
-        "&:hover": {
-          cursor: "pointer",
-          backgroundColor: isActive ? "#6666ff" : "grey",
-          borderRadius: "25px",
-        },
+        cursor: "pointer",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
       }}
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
     >
-      <Typography color={"#e5e5e5"} sx={{ wordBreak: "break-word" }}>
+      <Typography
+        variant="h5"
+        color={isActive ? "#1919ff" : "#e5e5e5"}
+        sx={{
+          wordBreak: "break-word",
+          "&:hover": {
+            color: isActive ? "#1919ff" : "#6666ff",
+          },
+        }}
+      >
         {problem.problem}
       </Typography>
     </Box>
