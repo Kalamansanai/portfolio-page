@@ -2,9 +2,23 @@ import { Box, Divider, Grid, Typography } from "@mui/material";
 //@ts-ignore
 import placeholder from "../images/placeholder.png";
 import { textColor } from "../config";
+import { SolutionContent, SolutionImage } from "../types";
 
 export default function Solution() {
-  // const text_color = "#FFFFC0";
+  const contentList: SolutionContent[] = [
+    {
+      title: "Teljes nyomonkövetés",
+      text: "Ahhoz hogy ",
+    },
+    { title: "title2", text: "lorem2" },
+    { title: "title3", text: "lorem3" },
+  ];
+
+  const imageList: SolutionImage[] = [
+    { title: "title1", imageSrc: placeholder },
+    { title: "title2", imageSrc: placeholder },
+    { title: "title3", imageSrc: placeholder },
+  ];
 
   return (
     <Grid
@@ -25,29 +39,9 @@ export default function Solution() {
         mt="50px"
         // sx={{ border: "2px solid blue" }}
       >
-        <TextBox
-          title="Test1"
-          text="
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum."
-        />
-        <ImageBox title="test" imageSrc={placeholder} />
-        <TextBox
-          title="Test2"
-          text="
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum."
-        />
+        <TextBox content={contentList[0]} />
+        <ImageBox image={imageList[1]} />
+        <TextBox content={contentList[2]} />
       </Grid>
       <Divider
         orientation="vertical"
@@ -66,30 +60,19 @@ export default function Solution() {
         mt="50px"
         // sx={{ border: "2px solid blue" }}
       >
-        <ImageBox title="test" imageSrc={placeholder} />
-        <TextBox
-          title="Test3"
-          text="
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum."
-        />
-        <ImageBox title="test" imageSrc={placeholder} />
+        <ImageBox image={imageList[0]} />
+        <TextBox content={contentList[1]} />
+        <ImageBox image={imageList[2]} />
       </Grid>
     </Grid>
   );
 }
 
 type textProps = {
-  title: string;
-  text: string;
+  content: SolutionContent;
 };
 
-function TextBox({ title, text }: textProps) {
+function TextBox({ content }: textProps) {
   return (
     <Box
       height="30%"
@@ -99,22 +82,25 @@ function TextBox({ title, text }: textProps) {
       alignItems="flex-start"
     >
       <Typography variant="h3" color={textColor}>
-        {title}
+        {content.title}
       </Typography>
-      <Typography color={textColor}>{text}</Typography>
+      <Typography color={textColor}>{content.text}</Typography>
     </Box>
   );
 }
 
-type imageProps = {
-  title: string;
-  imageSrc: string;
+type imgProps = {
+  image: SolutionImage;
 };
 
-function ImageBox({ title, imageSrc }: imageProps) {
+function ImageBox({ image }: imgProps) {
   return (
     <Box height="30%" width="100%" display="flex" justifyContent="center">
-      <img style={{ borderRadius: "25px" }} height="100%" src={imageSrc} />
+      <img
+        style={{ borderRadius: "25px" }}
+        height="100%"
+        src={image.imageSrc}
+      />
     </Box>
   );
 }
