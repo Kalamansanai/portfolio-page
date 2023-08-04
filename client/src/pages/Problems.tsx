@@ -5,6 +5,7 @@ import { Problem } from "../types";
 import { backgroundColor, textColor } from "../config";
 import React from "react";
 import { Card as MuiCard, CardContent } from "@mui/material";
+import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 
 export default function Problems() {
   const [content, setContent] = useState<string | null>(null);
@@ -59,7 +60,7 @@ export default function Problems() {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "flex-start",
-        backgroundImage: "url(/images/Untitled-1.png)",
+        backgroundImage: "url(/images/problem_bg_img.png)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -122,46 +123,54 @@ export default function Problems() {
             padding: "10px",
             justifyContent: "center",
             alignItems: "center",
+            position: "relative",
           }}
         >
-          <MuiCard
-            elevation={3}
-            sx={{
-              display: "flex",
-              backgroundColor: "white",
-              borderRadius: "25px",
-              border: "4px solid #0000FF",
-              opacity: isFading ? 0 : 1,
-              transition: "opacity 0.5s ease",
-            }}
-          >
-            <CardContent
+          {activeIndex !== null && (
+            <MuiCard
+              id="active-card"
+              elevation={3}
               sx={{
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
                 display: "flex",
+                backgroundColor: "white",
+                borderRadius: "25px",
+                border: "4px solid #0000FF",
                 opacity: isFading ? 0 : 1,
-                transition: "opacity 0.3s ease",
+                transition: "opacity 0.5s ease",
+                height: "450px",
+                width: "500px",
               }}
             >
-              <img
-                src={`/images/${activeIcon}`}
-                height={activeIcon === "fourth.png" ? 50 : 70}
-                width={activeIcon === "fourth.png" ? 50 : 70}
-              ></img>
-              <Typography
-                variant="h4"
-                color={"blue"}
-                sx={{ fontWeight: "600", paddingTop: "5px", paddingBottom: "5px" }}
+              <CardContent
+                sx={{
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  display: "flex",
+                  opacity: isFading ? 0 : 1,
+                  transition: "opacity 0.3s ease",
+                  maxHeight: "100%",
+                  overflow: "auto",
+                }}
               >
-                {activeTiltle}{" "}
-              </Typography>
-              <Typography variant="h5" color={backgroundColor} sx={{ textAlign: "justify" }}>
-                {content}
-              </Typography>
-            </CardContent>
-          </MuiCard>
+                <img
+                  src={`/images/${activeIcon}`}
+                  height={activeIcon === "fourth.png" ? 50 : 70}
+                  width={activeIcon === "fourth.png" ? 50 : 70}
+                ></img>
+                <Typography
+                  variant="h4"
+                  color={"blue"}
+                  sx={{ fontWeight: "600", paddingTop: "5px", paddingBottom: "5px" }}
+                >
+                  {activeTiltle}
+                </Typography>
+                <Typography variant="h5" color={backgroundColor} sx={{ textAlign: "justify" }}>
+                  {content}
+                </Typography>
+              </CardContent>
+            </MuiCard>
+          )}
         </Grid>
       </Grid>
     </Box>
@@ -191,21 +200,20 @@ function Card({ problem, setContent, isLast, isActive, onClick }: Props) {
         borderRadius: "25px",
         cursor: "pointer",
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
       }}
     >
       <Typography
         variant="h5"
-        color={isActive ? "#1919ff" : "#e5e5e5"}
+        color={"#F5F5F5"}
         sx={{
           wordBreak: "break-word",
-          "&:hover": {
-            color: isActive ? "#1919ff" : "#6666ff",
-          },
+          flexGrow: 1,
         }}
       >
-        {problem.problem}
+        {problem.problem} {isActive && <ArrowBackIosRoundedIcon sx={{ color: "#F5F5F5" }} />}
       </Typography>
     </Box>
   );
