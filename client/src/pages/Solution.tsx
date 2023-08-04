@@ -38,7 +38,10 @@ export default function Solution() {
       flexDirection="row"
       height="90%"
       width="100%"
-
+      sx={{
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
       // sx={{ border: "2px solid red" }}
     >
       <Grid
@@ -86,14 +89,8 @@ type textProps = {
 
 function TextBox({ content }: textProps) {
   return (
-    <Box
-      height="30%"
-      width="100%"
-      display="flex"
-      flexDirection="column"
-      alignItems="flex-start"
-    >
-      <Typography variant="h3" marginBottom="10px" color={textColor}>
+    <Box height="30%" width="100%" display="flex" flexDirection="column" alignItems="flex-start">
+      <Typography variant="h3" color={textColor}>
         {content.title}
       </Typography>
       <Typography variant="body2" color={textColor}>

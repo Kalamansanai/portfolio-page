@@ -6,6 +6,8 @@ export interface Page {
 export interface Problem {
   problem: string;
   solution: string;
+  icon: string;
+  tiltle: string;
 }
 
 export interface SolutionContent {
