@@ -1,0 +1,32 @@
+[
+  {
+    "problem": "Túl sok a vesztesége termelés során?",
+    "solution": "Gépi látásos megoldásainkkal fel tudunk készül specifikus problémák detektálására, és jelzés küldésére ha megtörténnek. Gépi tanulásos eljárásokkal és kellő adat gyűjtésével meg tudjuk előzni a hibákat a korábbi esetekből betanított algoritmusainkkal.",
+    "icon": "first.png",
+    "tiltle": "Gépi Látás és Tanulás"
+  },
+  {
+    "problem": "Egyes folyamatokat nehéz automatizálni?",
+    "solution": "A mesterséges intelligencia és gépi tanulás segítségével olyan folyamatokat is képesek lehetünk automatizálni, amiket eddig elképzelhetetlen volt emberi beavatkozás nélkül elvégezni.",
+    "icon": "second.png",
+    "tiltle": "Gépi Automatizálás"
+  },
+  {
+    "problem": "Van egy specifikus problémája ami egy kritikus probléma a termelési folyamat során?",
+    "solution": "Képesek vagyunk specifikálódni egy kifejezett problémára, és egy már meglévő rendszerhez adaptálni az elkészülő megoldásunkat.",
+    "icon": "third.png",
+    "tiltle": "Specifikus Megoldásások"
+  },
+  {
+    "problem": "Hatalmas költség egy ilyen rendszer, és nem elég flexibilis?",
+    "solution": "Versenytársainkkal szemben mi olcsó eszközöket használunk, célunk hogy az eszközök modulárisak, pótolhatóak legyenek. Ügyfeleink kiválaszthatják hogy mely eszközöket szeretnék a rendszerükben használni, áruk, teljesítményük és egyéb paramétereik alapján mérlegelve.",
+    "icon": "fourth.png",
+    "tiltle": "Olcsóbb megoldások"
+  },
+  {
+    "problem": "Egyedi igényei vannak?",
+    "solution": "Olyan szoftver rendszereket és algoritmusokat készítünk amik az ügyfeleink speciális igényeire vannak szabva, az ők felhasználási igényeiket tartjuk szem előtt a fejlesztés közben.",
+    "icon": "fifth.png",
+    "tiltle": "Ügyfélközpontú Algoritmusok"
+  }
+]

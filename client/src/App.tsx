@@ -1,26 +1,20 @@
+import { Grid } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
-import { Box, Button, Grid } from "@mui/material";
-import Problems from "./pages/Problems";
-import Wrapper from "./pages/Wrapper";
-import Title from "./pages/Title";
-import Team from "./pages/Team";
-import { Page } from "./types";
-import Solution from "./pages/Solution";
-import Projects from "./pages/Projects";
-import ContactUs from "./pages/ContactUs";
-import ScrollToTopButton from "./OtherComponents/ScrollToTop";
 import "./App.css";
 import Navbar from "./OtherComponents/Navbar";
+import ScrollToTopButton from "./OtherComponents/ScrollToTop";
+import pagesJson from "./data/pages.json";
+import Wrapper from "./pages/Wrapper";
+import { getComponentFromName } from "./static";
+import { IPage, IPageJson } from "./types";
 
 function App() {
-  const pages: Page[] = [
-    { title: "Title", element: <Title /> },
-    { title: "Miért mi ?", element: <Problems /> },
-    { title: "Megoldásaink", element: <Solution /> },
-    { title: "Munkáink", element: <Projects /> },
-    { title: "Rólunk", element: <Team /> },
-    { title: "Kapcsolat", element: <ContactUs /> },
-  ];
+  const pages: IPage[] = pagesJson.map((page: IPageJson) => {
+    return {
+      title: page.title,
+      component: getComponentFromName(page.componentName),
+    };
+  });
 
   const [targetIndex, setTargetIndex] = useState<number | undefined>(undefined);
   const target = useRef<HTMLDivElement>(null);
@@ -49,7 +43,7 @@ function App() {
           <Wrapper
             key={index}
             reference={targetIndex === index ? target : null}
-            child={page.element}
+            child={page.component}
           />
         ))}
 

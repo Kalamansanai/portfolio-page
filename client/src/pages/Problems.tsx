@@ -1,11 +1,12 @@
 import { Box, Grid, Link, Typography } from "@mui/material";
 import "../App.css";
 import { useState } from "react";
-import { Problem } from "../types";
+import { IProblem } from "../types";
 import { backgroundColor, textColor } from "../config";
 import React from "react";
 import { Card as MuiCard, CardContent } from "@mui/material";
 import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
+import problemsJson from "../data/problems.json";
 
 export default function Problems() {
   const [content, setContent] = useState<string | null>(null);
@@ -14,43 +15,7 @@ export default function Problems() {
   const [activeTiltle, setActiveTiltle] = useState<string | null>(null);
   const [isFading, setIsFading] = useState(false);
 
-  const problems: Problem[] = [
-    {
-      problem: "Túl sok a vesztesége termelés során?",
-      solution:
-        "Gépi látásos megoldásainkkal fel tudunk készül specifikus problémák detektálására, és jelzés küldésére ha megtörténnek. Gépi tanulásos eljárásokkal és kellő adat gyűjtésével meg tudjuk előzni a hibákat a korábbi esetekből betanított algoritmusainkkal.",
-      icon: "first.png",
-      tiltle: "Gépi Látás és Tanulás",
-    },
-    {
-      problem: "Egyes folyamatokat nehéz automatizálni?",
-      solution:
-        "A mesterséges intelligencia és gépi tanulás segítségével olyan folyamatokat is képesek lehetünk automatizálni, amiket eddig elképzelhetetlen volt emberi beavatkozás nélkül elvégezni.",
-      icon: "second.png",
-      tiltle: "Gépi Automatizálás",
-    },
-    {
-      problem: "Van egy specifikus problémája ami egy kritikus probléma a termelési folyamat során?",
-      solution:
-        "Képesek vagyunk specifikálódni egy kifejezett problémára, és egy már meglévő rendszerhez adaptálni az elkészülő megoldásunkat.",
-      icon: "third.png",
-      tiltle: "Specifikus Megoldásások",
-    },
-    {
-      problem: "Hatalmas költség egy ilyen rendszer, és nem elég flexibilis?",
-      solution:
-        "Versenytársainkkal szemben mi olcsó eszközöket használunk, célunk hogy az eszközök modulárisak, pótolhatóak legyenek. Ügyfeleink kiválaszthatják hogy mely eszközöket szeretnék a rendszerükben használni, áruk, teljesítményük és egyéb paramétereik alapján mérlegelve.",
-      icon: "fourth.png",
-      tiltle: "Olcsóbb megoldások",
-    },
-    {
-      problem: "Egyedi igényei vannak?",
-      solution:
-        "Olyan szoftver rendszereket és algoritmusokat készítünk amik az ügyfeleink speciális igényeire vannak szabva, az ők felhasználási igényeiket tartjuk szem előtt a fejlesztés közben.",
-      icon: "fifth.png",
-      tiltle: "Ügyfélközpontú Algoritmusok",
-    },
-  ];
+  const problems: IProblem[] = problemsJson;
 
   return (
     <Box
@@ -73,7 +38,13 @@ export default function Problems() {
         sx={{ width: "100%" }}
         marginTop="50px"
       >
-        <Typography variant="h2" color={textColor} fontWeight="bold" marginBottom="20px" marginRight="20px">
+        <Typography
+          variant="h2"
+          color={textColor}
+          fontWeight="bold"
+          marginBottom="20px"
+          marginRight="20px"
+        >
           Miért válasszon minket<span style={{ color: "#0000ff" }}>?</span>
         </Typography>
       </Box>
@@ -92,7 +63,7 @@ export default function Problems() {
             borderRadius: "25px",
           }}
         >
-          {problems.map((element: Problem, index: number) => (
+          {problems.map((element: IProblem, index: number) => (
             <Card
               key={element.problem}
               problem={element}
@@ -161,11 +132,19 @@ export default function Problems() {
                 <Typography
                   variant="h4"
                   color={"blue"}
-                  sx={{ fontWeight: "600", paddingTop: "5px", paddingBottom: "5px" }}
+                  sx={{
+                    fontWeight: "600",
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
+                  }}
                 >
                   {activeTiltle}
                 </Typography>
-                <Typography variant="h5" color={backgroundColor} sx={{ textAlign: "justify" }}>
+                <Typography
+                  variant="h5"
+                  color={backgroundColor}
+                  sx={{ textAlign: "justify" }}
+                >
                   {content}
                 </Typography>
               </CardContent>
@@ -178,7 +157,7 @@ export default function Problems() {
 }
 
 type Props = {
-  problem: Problem;
+  problem: IProblem;
   setContent: React.Dispatch<React.SetStateAction<string | null>>;
   isLast: boolean;
   isActive: boolean;
@@ -213,7 +192,8 @@ function Card({ problem, setContent, isLast, isActive, onClick }: Props) {
           flexGrow: 1,
         }}
       >
-        {problem.problem} {isActive && <ArrowBackIosRoundedIcon sx={{ color: "#F5F5F5" }} />}
+        {problem.problem}{" "}
+        {isActive && <ArrowBackIosRoundedIcon sx={{ color: "#F5F5F5" }} />}
       </Typography>
     </Box>
   );

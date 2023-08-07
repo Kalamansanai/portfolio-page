@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Production Line Monitoring",
+    "text": "Ez egy kollaboratív kutatási és fejlesztési projektként indult, a Knorr-Beremse és a BME Ipar4.0 Technológiai központ(ennek a fejlesztői csapata vagyunk mi) között. A cél az volt, hogy ipari környezetben elősegítsük a szerelési folyamatok monitorozását, optimalizálási célból. Az alkatrészeket tartalmazó tálcákat, kamerák figyelik felülről és sorrendben jelzik az szerelést végző operátornak hogy melyik alkatrész következik. Mindeközben minden eseményről eltárol egy log-ot, hogy később kielemezhető legyen. A rendszer előnye hogy végtelen tálcára és ehhez hasonló esetekre alkalmazható, így nincs szükség speciális, szenzorokkal felszerelt drága eszköztálcákat használni, csupán felhelyezni a kameráinkat oda ahol megfigyelést kívánunk végezni. Emellett integráltuk alap szinten a Knorr-Bremse meglévő gyártás irányító rendszeréhez, így azzal szinkronban tud elindulni a detektáló algoritmusunk.",
+    "imgName": "plm_img"
+  },
+  {
+    "title": "Consumption Meter",
+    "text": "Ennek a projektnek a célja, hogy a felhasználó digitálisan nyomon tudja követni a fogyasztásait, és ezeket az adatokat el is tudja tárolni. A megoldás egy esp32 kamerás mikrokontrollerből készített detektorral működik. A felhasználó fel tudja helyezni a mérőóra lapjára, majd a webes felületen beállított konfiguráció szerint, adott időközönként az eszköz leolvassa az óra állását. A webes felületen tudja kezelni a detektorait, felvenni újakat, különböző kimutatásokat láthat a fogyasztásairól és exportálhatja adatait. Egy jó megoldás lehet egy több ingatlannal rendelkező személy számára hogy nyomon kövesse összes kiadott bérleményének fogyasztási adatait.",
+    "imgName": "cm_img"
+  }
+]

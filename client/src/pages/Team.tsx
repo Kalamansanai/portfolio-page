@@ -4,26 +4,11 @@ import Carousel from "react-material-ui-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
 import { textColor } from "../config";
+import teamJson from "../data/team.json";
+import { ITeamMember } from "../types";
 
 function Team() {
-  const teamMembers = [
-    {
-      name: "Bálint Dániel",
-      description: "Artificial Intelligence and Backend Developer",
-      image: "/images/ipartk-333.png",
-    },
-    {
-      name: "Bór Milán",
-      description: "Software Developer and Project Manager",
-      image: "/images/ipartk-339.png",
-    },
-    {
-      name: "Szabó Bálint",
-      description: "Frontend Developer and UX Designer",
-      image: "/images/ipartk-360.png",
-    },
-    // Here we could add Petya xd
-  ];
+  const teamMembers: ITeamMember[] = teamJson;
   const [currentIndex, setCurrentIndex] = useState(0);
   const prevIndex =
     (currentIndex - 1 + teamMembers.length) % teamMembers.length;

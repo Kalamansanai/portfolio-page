@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Bálint Dániel",
+    "description": "Artificial Intelligence and Backend Developer",
+    "image": "/images/ipartk-333.png"
+  },
+  {
+    "name": "Bór Milán",
+    "description": "Software Developer and Project Manager",
+    "image": "/images/ipartk-339.png"
+  },
+  {
+    "name": "Szabó Bálint",
+    "description": "Frontend Developer and UX Designer",
+    "image": "/images/ipartk-360.png"
+  }
+]

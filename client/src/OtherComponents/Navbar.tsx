@@ -1,11 +1,11 @@
 import { Box, Button } from "@mui/material";
-import { Page } from "../types";
+import { IPage } from "../types";
 import { useState } from "react";
 //@ts-ignore
 // import backgroundImage from "../images/navbar4.png";
 
 type Props = {
-  pages: Page[];
+  pages: IPage[];
   targetIndex: number | undefined;
   setTargetIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
   scroll: boolean;
