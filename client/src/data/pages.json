@@ -1,0 +1,8 @@
+[
+  { "title": "Title", "componentName": "title" },
+  { "title": "Miért mi ?", "componentName": "problems" },
+  { "title": "Megoldásaink", "componentName": "solutions" },
+  { "title": "Munkáink", "componentName": "projects" },
+  { "title": "Rólunk", "componentName": "team" },
+  { "title": "Kapcsolat", "componentName": "contactUs" }
+]
