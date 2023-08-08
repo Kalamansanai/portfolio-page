@@ -1,4 +1,4 @@
-import { Box, Grid, Link, Typography } from "@mui/material";
+import { Box, Grid, Link, Typography, useMediaQuery } from "@mui/material";
 import "../App.css";
 import { useState } from "react";
 import { IProblem } from "../types";
@@ -17,13 +17,23 @@ export default function Problems() {
 
   const problems: IProblem[] = problemsJson;
 
+  const isMobile = useMediaQuery("(max-width:800px)");
+  const justify = isMobile ? "row" : "column";
+  const cardListHeight = isMobile ? "40%" : "80%";
+  const cardListWidth = isMobile ? "80%" : "50%";
+
+  const cardWidth = isMobile ? "100%" : "50%";
+  const cardHeigth = isMobile ? "50%" : "80%";
+
+  const titleVariant = isMobile ? "h4" : "h2";
+
   return (
     <Box
       sx={{
         height: "100vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: "column",
         alignItems: "flex-start",
         backgroundImage: "url(/images/problem_bg_img.png)",
         backgroundSize: "cover",
@@ -39,7 +49,7 @@ export default function Problems() {
         marginTop="50px"
       >
         <Typography
-          variant="h2"
+          variant={titleVariant}
           color={textColor}
           fontWeight="bold"
           marginBottom="20px"
@@ -51,15 +61,17 @@ export default function Problems() {
       <Grid
         display="flex"
         flexDirection="row"
+        flexWrap="wrap"
         justifyContent="space-around"
         sx={{ height: "100%", width: "100%" }}
       >
         <Grid
           display="flex"
           flexDirection="column"
+          flexWrap="wrap"
           sx={{
-            height: "80%",
-            width: "40%",
+            height: cardListHeight,
+            width: cardListWidth,
             borderRadius: "25px",
           }}
         >
@@ -86,8 +98,8 @@ export default function Problems() {
         <Grid
           sx={{
             backgroundColor: backgroundColor,
-            height: "80%",
-            width: "40%",
+            height: cardHeigth,
+            width: cardWidth,
             borderRadius: "25px",
             display: "flex",
             flexDirection: "column",
@@ -108,8 +120,8 @@ export default function Problems() {
                 border: "4px solid #0000FF",
                 opacity: isFading ? 0 : 1,
                 transition: "opacity 0.5s ease",
-                height: "450px",
-                width: "500px",
+                height: "90%",
+                width: "90%",
               }}
             >
               <CardContent
@@ -121,7 +133,6 @@ export default function Problems() {
                   opacity: isFading ? 0 : 1,
                   transition: "opacity 0.3s ease",
                   maxHeight: "100%",
-                  overflow: "auto",
                 }}
               >
                 <img
@@ -165,17 +176,20 @@ type Props = {
 };
 
 function Card({ problem, setContent, isLast, isActive, onClick }: Props) {
+  const isMobile = useMediaQuery("(max-width:800px)");
+  const variant = isMobile ? "body1" : "h5";
+  const padding = isMobile ? "2px" : "20px";
+
   return (
     <Box
       onClick={onClick}
       sx={{
-        flex: "1",
         width: "calc(100% - 50px)",
-        padding: "20px",
+        padding: padding,
         margin: "5px",
         marginBottom: isLast ? "0px" : "15px",
+        height: "8%",
         maxHeight: "100%",
-        overflow: "auto",
         borderRadius: "25px",
         cursor: "pointer",
         display: "flex",
@@ -185,7 +199,7 @@ function Card({ problem, setContent, isLast, isActive, onClick }: Props) {
       }}
     >
       <Typography
-        variant="h5"
+        variant={variant}
         color={"#F5F5F5"}
         sx={{
           wordBreak: "break-word",

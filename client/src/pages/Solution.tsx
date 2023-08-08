@@ -1,106 +1,74 @@
-import { Box, Divider, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Grid,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 
 import { textColor } from "../config";
-import { ISolutionContent, ISolutionImage } from "../types";
+import { ISolution } from "../types";
 
-import imagesJson from "../data/solution_images.json";
 import contentsJson from "../data/solution_content.json";
 import { getImageByName } from "../static";
 
 export default function Solution() {
-  const contentList: ISolutionContent[] = contentsJson;
-
-  const imageList: ISolutionImage[] = imagesJson;
+  const contentList: ISolution[] = contentsJson;
 
   return (
     <Grid
       display="flex"
       flexDirection="row"
-      height="90%"
-      width="100%"
-      sx={{
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-      // sx={{ border: "2px solid red" }}
+      justifyContent="center"
+      alignItems="center"
+      flexWrap="wrap"
+      sx={{ height: "100%", width: "100%" }}
     >
-      <Grid
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-around"
-        height="100%"
-        width="50%"
-        ml="25px"
-        mt="50px"
-        // sx={{ border: "2px solid blue" }}
-      >
-        <TextBox content={contentList[0]} />
-        <ImageBox image={imageList[1]} />
-        <TextBox content={contentList[2]} />
-      </Grid>
-      <Divider
-        orientation="vertical"
-        color={textColor}
-        variant="middle"
-        flexItem
-        light
-        sx={{ margin: 5, mt: "150px" }}
-      />
-      <Grid
-        display="flex"
-        flexDirection="column"
-        justifyContent="space-around"
-        height="100%"
-        width="50%"
-        mt="50px"
-        // sx={{ border: "2px solid blue" }}
-      >
-        <ImageBox image={imageList[0]} />
-        <TextBox content={contentList[1]} />
-        <ImageBox image={imageList[2]} />
-      </Grid>
+      {contentList.map((solution: ISolution) => (
+        <SolutionBox solution={solution} />
+      ))}
     </Grid>
   );
 }
 
-type textProps = {
-  content: ISolutionContent;
+type Props = {
+  solution: ISolution;
 };
 
-function TextBox({ content }: textProps) {
+function SolutionBox({ solution }: Props) {
+  const isBelow1100 = useMediaQuery("(max-width:1150px)");
+  const isMobile = useMediaQuery("(max-width:800px)");
+
+  const isImage = solution.title === "";
+  const align = isImage ? "center" : "flex-start";
+  const overflow = isImage ? "auto" : "hidden";
+
   return (
     <Box
-      height="30%"
-      width="100%"
+      key={solution.title}
+      height={isMobile ? "14%" : "32%"}
+      maxHeight="400px"
+      overflow={overflow}
+      width="45%"
+      minWidth={isImage ? "200px" : "500px"}
       display="flex"
       flexDirection="column"
-      alignItems="flex-start"
-    >
-      <Typography variant="h3" color={textColor}>
-        {content.title}
-      </Typography>
-      <Typography variant="body2" color={textColor}>
-        {content.text}
-      </Typography>
-    </Box>
-  );
-}
-
-type imgProps = {
-  image: ISolutionImage;
-};
-
-function ImageBox({ image }: imgProps) {
-  return (
-    <Box
-      height="35%"
-      width="100%"
-      display="flex"
+      alignItems={align}
       justifyContent="center"
-      marginBottom="10px"
-      marginTop="10px"
+      // border="1px solid red"
     >
-      {getImageByName(image.imageSrc)}
+      {!isImage && (
+        <Typography variant={isBelow1100 ? "h6" : "h4"} color={textColor}>
+          {solution.title}
+        </Typography>
+      )}
+      {!isImage && (
+        <Typography variant={isMobile ? "body2" : "body1"} color={textColor}>
+          {solution.text}
+        </Typography>
+      )}
+      {getImageByName(solution.imageSrc)}
     </Box>
   );
 }

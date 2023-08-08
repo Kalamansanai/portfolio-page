@@ -15,13 +15,9 @@ export interface IProblem {
   tiltle: string;
 }
 
-export interface ISolutionContent {
+export interface ISolution {
   title: string;
   text: string;
-}
-
-export interface ISolutionImage {
-  title: string;
   imageSrc: string;
 }
 

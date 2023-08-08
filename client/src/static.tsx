@@ -24,9 +24,9 @@ const images: { [name: string]: JSX.Element } = {
   cm_img: (
     <img height="30%" src={cm_img} style={{ border: "2px solid black" }} />
   ),
-  solution_smart_camera: <img src={smartCameraImage} />,
-  solution_cv: <img src={cvImage} />,
-  solution_design: <img src={desing} />,
+  solution_smart_camera: <img height="90%" src={smartCameraImage} />,
+  solution_cv: <img height="90%" src={cvImage} />,
+  solution_design: <img height="90%" src={desing} />,
 };
 
 export function getImageByName(name: string) {
