@@ -8,13 +8,14 @@ export default function Projects() {
   const projects: IProject[] = projectsJson;
   const isMobile = useMediaQuery("(max-width:800px)");
   const align = "flex-start";
+  const height = isMobile ? "200vh" : "100vh";
 
   return (
     <Grid
       display="flex"
       flexDirection="column"
       alignItems="center"
-      sx={{ height: "100%", width: "100%" }}
+      sx={{ height: height, width: "100vw" }}
     >
       <Typography variant="h2" color="white" sx={{ marginTop: "50px" }}>
         Munkáink

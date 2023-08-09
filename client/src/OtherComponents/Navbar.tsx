@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, useMediaQuery } from "@mui/material";
 import { IPage } from "../types";
 import { useState } from "react";
 //@ts-ignore
@@ -22,6 +22,9 @@ export default function Navbar({
   const [color, setColor] = useState("#2a282a");
   const text_color = "#e5e5e5";
 
+  const isMobile = useMediaQuery("(max-width:800px)");
+  const width = isMobile ? "100%" : "50%";
+
   return (
     <Box
       display="flex"
@@ -32,7 +35,7 @@ export default function Navbar({
         position: "fixed",
         height: "3vh",
         minHeight: "40px",
-        width: "50%",
+        width: width,
         backgroundColor: "#2a282a",
         borderRadius: 30,
         fontFamily: "sans-serif",

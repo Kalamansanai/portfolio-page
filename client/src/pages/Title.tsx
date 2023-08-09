@@ -49,15 +49,22 @@ const Title: React.FC = () => (
     >
       <source src={video} type="video/mp4" />
     </video>
-    <Typography variant="h2" sx={{ fontWeight: "bold", mb: 4, color: textColor, zIndex: 3 }}>
+    <Typography
+      variant="h2"
+      sx={{ fontWeight: "bold", mb: 4, color: textColor, zIndex: 3 }}
+    >
       Smart Camera Systems
       <br />
       with Computer Vision & AI
     </Typography>
 
-    <Typography variant="body1" sx={{ fontSize: 18, maxWidth: 600, mb: 4, color: textColor, zIndex: 3 }}>
-      Welcome to BME-I4 Vision Systems, where we specialize in creating cutting-edge smart camera systems
-      integrated with the power of AI and computer vision. Our mission is to deliver innovative solutions that
+    <Typography
+      variant="body1"
+      sx={{ fontSize: 18, maxWidth: 600, mb: 4, color: textColor, zIndex: 3 }}
+    >
+      Welcome to BME-I4 Vision Systems, where we specialize in creating
+      cutting-edge smart camera systems integrated with the power of AI and
+      computer vision. Our mission is to deliver innovative solutions that
       enhance security, automate processes, and drive business efficiency.
     </Typography>
   </Box>

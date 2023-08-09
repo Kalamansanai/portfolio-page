@@ -10,13 +10,7 @@ type Props = {
 function Wrapper({ reference, child }: Props) {
   const isMobile = useMediaQuery("(max-width:600px)");
 
-  const size = isMobile ? "200vh" : "100vh";
-
-  return (
-    <div ref={reference} style={{ height: "100vh", width: "100vw" }}>
-      {child}
-    </div>
-  );
+  return <div ref={reference}>{child}</div>;
 }
 
 export default Wrapper;

@@ -16,6 +16,9 @@ import { getImageByName } from "../static";
 export default function Solution() {
   const contentList: ISolution[] = contentsJson;
 
+  const isMobile = useMediaQuery("(max-width:800px)");
+  const height = isMobile ? "200vh" : "100vh";
+
   return (
     <Grid
       display="flex"
@@ -23,7 +26,7 @@ export default function Solution() {
       justifyContent="center"
       alignItems="center"
       flexWrap="wrap"
-      sx={{ height: "100%", width: "100%" }}
+      sx={{ height: height, width: "100vw" }}
     >
       {contentList.map((solution: ISolution) => (
         <SolutionBox solution={solution} />
@@ -40,22 +43,23 @@ function SolutionBox({ solution }: Props) {
   const isBelow1100 = useMediaQuery("(max-width:1150px)");
   const isMobile = useMediaQuery("(max-width:800px)");
 
+  const align = isMobile ? "center" : "flex-start";
+  const overflow = isMobile ? "auto" : "hidden";
+  const width = isMobile ? "100%" : "45%";
+
   const isImage = solution.title === "";
-  const align = isImage ? "center" : "flex-start";
-  const overflow = isImage ? "auto" : "hidden";
 
   return (
     <Box
       key={solution.title}
       height={isMobile ? "14%" : "32%"}
       maxHeight="400px"
-      overflow={overflow}
-      width="45%"
+      width={width}
       minWidth={isImage ? "200px" : "500px"}
       display="flex"
       flexDirection="column"
-      alignItems={align}
-      justifyContent="center"
+      alignItems="center"
+      overflow={overflow}
       // border="1px solid red"
     >
       {!isImage && (

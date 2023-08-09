@@ -52,11 +52,12 @@ function Team() {
   return (
     <Box
       sx={{
+        height: "100vh",
+        width: "100vw",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
         opacity: isVisible ? 1 : 0,
         transition: "opacity 1s ease",
       }}
