@@ -21,7 +21,7 @@
   },
   {
     "title": "Egyedi megoldások",
-    "text": "Megoldásaink során törekedtünk arra hogy minél olcsóbb megoldásokat tartalmazzok eszközök tekintetében. Erre kezdetben a Raspberry Pi 4 eszközöket használtuk. Ez azért jó, mert ezek lényegesen olcsóbb eszközök mint a speciális ipari kamerák. Mindemellett fontos cél volt, hogy a rendszer ne függjön semmilyen konkrét eszköztől és verziótól, így bármilyen más eszközt is fel lehet használni optikai szenzor gyanánt. Képfelismerési és mesterséges intelligencia témakörben is hasonló célokat tűztünk ki, hogy az eszközökhöz hasonlóan ezek is igény szerint cserélhetőek/bővíthetőek legyenek. Így ugyanazon rendszer, egy szimpla config fájl megváltoztatásával ki tud szolgálni több teljesen különböző felhasználói igényt.",
+    "text": "Megoldásaink során törekedtünk arra hogy minél olcsóbb megoldásokat tartalmazzok eszközök tekintetében. Erre kezdetben a Raspberry Pi 4 eszközöket használtuk. Ez azért jó, mert ezek lényegesen olcsóbb eszközök mint a speciális ipari kamerák. Mindemellett fontos cél volt, hogy a rendszer ne függjön semmilyen konkrét eszköztől és verziótól, így bármilyen más eszközt is fel lehet használni optikai szenzor gyanánt. Képfelismerési és mesterséges intelligencia témakörben is hasonló célokat tűztünk ki, hogy az eszközökhöz hasonlóan ezek is igény szerint cserélhetőek/bővíthetőek legyenek.",
     "imageSrc": ""
   },
   {
