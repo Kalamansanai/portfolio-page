@@ -2,31 +2,16 @@
   {
     "title": "Folyamat nyomonkövetés",
     "text": "Annak az érdekében, hogy termelésének teljes folyamatát le tudja képezni digitálisan, mi egy teljes rendszert tudunk ajánlani, ami a korábban is ismertnek tekinthető szenzorok mellett optikai szenzorokat is alkalmaz. Miért jó ez? Egyedi munkalépéseket igen nehéz hagyományos szenzorokkal leképezni, ekkor jön képbe a mesterséges intelligencia és a képfeldolgozás. Hiszen ezeknek segítségével speciális/komplex eseményeket is képesek vagyunk detektálni, ezáltal jegyzőkönyvben eltárolni és nyomon követni azok bekövetkeztét. Így lehetőséget kap a jövőben hatékonyan elkerülni ezeket a hibákat. ",
-    "imageSrc": ""
-  },
-  {
-    "title": "",
-    "text": "",
     "imageSrc": "solution_smart_camera"
   },
   {
     "title": "Gépi Látás",
     "text": "A gépi látás az a terület, ami arra fókuszál hogy a gépeket felruházzon a látás képességével. Ez alatt azt értjük hogy képes legyen tanulni, tudjon következtetéseket levonni, és cselekedni azok alapján amiket 'lát'. Ez egy alterülete a mesterséges intelligenciának, ami arra fókuszál hogy a gépeket ellássa egy az emberekéhez hasonló intelligenciával. Ezt kihasználva képesek vagyunk olyan hibák felderítésére, amiket más módon nem lehetne hatékonyan megtenni. Emellett ennek segítségével olyan megoldásokat is képesek vagyunk készíteni amik általánosíthatóak, tehát különböző munkafolyamatok megfigyelésére is fel lehet használni.",
-    "imageSrc": ""
-  },
-  {
-    "title": "",
-    "text": "",
     "imageSrc": "solution_cv"
   },
   {
     "title": "Egyedi megoldások",
     "text": "Megoldásaink során törekedtünk arra hogy minél olcsóbb megoldásokat tartalmazzon eszközök tekintetében. Erre kezdetben a Raspberry Pi 4 eszközöket használtuk. Ez azért jó, mert ezek lényegesen olcsóbb eszközök mint a speciális ipari kamerák. Mindemellett fontos cél volt, hogy a rendszer ne függjön semmilyen konkrét eszköztől és verziótól, így bármilyen más eszközt is fel lehet használni optikai szenzor gyanánt. Képfelismerési és mesterséges intelligencia témakörben is hasonló célokat tűztünk ki, hogy az eszközökhöz hasonlóan ezek is igény szerint cserélhetőek/bővíthetőek legyenek.",
-    "imageSrc": ""
-  },
-  {
-    "title": "",
-    "text": "",
     "imageSrc": "solution_design"
   }
 ]

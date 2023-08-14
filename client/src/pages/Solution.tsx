@@ -1,35 +1,17 @@
-import {
-  Box,
-  Divider,
-  Grid,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-
+import React from "react";
+import { Box, Grid, Hidden, Typography } from "@mui/material";
 import { textColor } from "../config";
 import { ISolution } from "../types";
-
 import contentsJson from "../data/solution_content.json";
 import { getImageByName } from "../static";
 
 export default function Solution() {
   const contentList: ISolution[] = contentsJson;
 
-  const isMobile = useMediaQuery("(max-width:800px)");
-  const height = isMobile ? "200vh" : "100vh";
-
   return (
-    <Grid
-      display="flex"
-      flexDirection="row"
-      justifyContent="center"
-      alignItems="center"
-      flexWrap="wrap"
-      sx={{ height: height, width: "100vw" }}
-    >
-      {contentList.map((solution: ISolution) => (
-        <SolutionBox solution={solution} />
+    <Grid container justifyContent="center" alignItems="center">
+      {contentList.map((solution: ISolution, index: number) => (
+        <SolutionBox key={solution.title + index} solution={solution} index={index} />
       ))}
     </Grid>
   );
@@ -37,42 +19,41 @@ export default function Solution() {
 
 type Props = {
   solution: ISolution;
+  index: number;
 };
 
-function SolutionBox({ solution }: Props) {
-  const isBelow1100 = useMediaQuery("(max-width:1150px)");
-  const isMobile = useMediaQuery("(max-width:800px)");
-
-  const align = isMobile ? "center" : "flex-start";
-  const overflow = isMobile ? "auto" : "hidden";
-  const width = isMobile ? "100%" : "45%";
-
-  const isImage = solution.title === "";
-
+function SolutionBox({ solution, index }: Props) {
   return (
-    <Box
-      key={solution.title}
-      height={isMobile ? "14%" : "32%"}
-      maxHeight="400px"
-      width={width}
-      minWidth={isImage ? "200px" : "500px"}
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      overflow={overflow}
-      // border="1px solid red"
-    >
-      {!isImage && (
-        <Typography variant={isBelow1100 ? "h6" : "h4"} color={textColor}>
-          {solution.title}
-        </Typography>
+    <Grid container justifyContent="center" alignItems="center" spacing={0}>
+      {/* Render Image for xs screens and even indices on larger screens */}
+      {(index % 2 === 0 || !solution.text) && (
+        <Grid item xs={12} sm={6}>
+          <Box textAlign="center" p={2} style={{ height: 200, overflow: "hidden" }}>
+            {solution.imageSrc && getImageByName(solution.imageSrc)}
+          </Box>
+        </Grid>
       )}
-      {!isImage && (
-        <Typography variant={isMobile ? "body2" : "body1"} color={textColor}>
-          {solution.text}
-        </Typography>
+
+      {/* Always render Text for all screen sizes */}
+      <Grid item xs={12} sm={6}>
+        <Box textAlign="center" p={2}>
+          <Typography variant="h4" color={textColor}>
+            {solution.title}
+          </Typography>
+          <Typography variant="body1" color={textColor} textAlign={"justify"}>
+            {solution.text}
+          </Typography>
+        </Box>
+      </Grid>
+
+      {/* For larger screens: Render Image on odd indices */}
+      {index % 2 === 1 && window.innerWidth > 600 && (
+        <Grid item sm={6}>
+          <Box textAlign="center" p={2} style={{ height: 200, overflow: "hidden" }}>
+            {solution.imageSrc && getImageByName(solution.imageSrc)}
+          </Box>
+        </Grid>
       )}
-      {getImageByName(solution.imageSrc)}
-    </Box>
+    </Grid>
   );
 }
