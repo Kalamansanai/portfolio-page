@@ -1,73 +1,59 @@
-// TitlePage.tsx
-import React from "react";
-import { Box, Typography, Button } from "@mui/material";
-//@ts-ignore
-import video from "../images/video2.mp4";
-import { textColor } from "../config";
+import { Box, Button, Typography } from "@mui/material";
+import { useRef, useState } from "react";
 
-const Title: React.FC = () => (
-  <Box
-    sx={{
-      height: "100vh",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "flex-start",
-      backgroundImage: "url(/images/tiltle_bg_img.png)",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
+export default function Title() {
+  const slideImages = [
+    "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+    "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80",
+    "https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+    "https://images.unsplash.com/photo-1444525873963-75d329ef9e1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+  ];
 
-      zIndex: -3,
-      padding: 2,
-    }}
-  >
-    <div
-      style={{
-        position: "absolute",
-        width: "calc(80% - 20px)",
-        height: "calc(80% - 20px)",
-        top: "80px",
-        right: "0px",
-        border: "10px solid rgba(0, 0, 0, 0.5)",
-        zIndex: 2,
-      }}
-    ></div>
-    <video
-      autoPlay
-      muted
-      loop
-      style={{
-        position: "absolute",
-        width: "80%",
-        height: "80%",
-        objectFit: "cover",
-        right: "0px",
-        top: "80px",
-        zIndex: 1,
+  const [imageIndex, setImageIndex] = useState(0);
+
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="flex-end"
+      sx={{
+        height: "100vh",
+        width: "100vw",
+        backgroundImage: "url(/images/tiltle_bg_img.png)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
-      <source src={video} type="video/mp4" />
-    </video>
-    <Typography
-      variant="h2"
-      sx={{ fontWeight: "bold", mb: 4, color: textColor, zIndex: 3 }}
-    >
-      Smart Camera Systems
-      <br />
-      with Computer Vision & AI
-    </Typography>
-
-    <Typography
-      variant="body1"
-      sx={{ fontSize: 18, maxWidth: 600, mb: 4, color: textColor, zIndex: 3 }}
-    >
-      Welcome to BME-I4 Vision Systems, where we specialize in creating
-      cutting-edge smart camera systems integrated with the power of AI and
-      computer vision. Our mission is to deliver innovative solutions that
-      enhance security, automate processes, and drive business efficiency.
-    </Typography>
-  </Box>
-);
-
-export default Title;
+      <Typography
+        variant="h1"
+        color="white"
+        width="20%"
+        position="absolute"
+        top="300px"
+        sx={{ width: "100%" }}
+      >
+        Okos kamerás monitorzó rendszerek
+      </Typography>
+      <img
+        src={slideImages[imageIndex]}
+        height={"80%"}
+        width={"80%"}
+        style={{ marginTop: "80px" }}
+      />
+      <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="center"
+        sx={{ width: "80%" }}
+      >
+        {slideImages.map((slide, index) => (
+          <Button onClick={() => setImageIndex(index)}>
+            {imageIndex === index ? "X" : "O"}
+          </Button>
+        ))}
+      </Box>
+    </Box>
+  );
+}
