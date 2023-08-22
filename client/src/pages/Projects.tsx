@@ -20,9 +20,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function Projects() {
   const projects: IProject[] = projectsJson;
-  const isMobile = useMediaQuery("(max-width:1200px)");
   const align = "flex-start";
-  const height = isMobile ? "120vh" : "100vh";
 
   return (
     <Grid
