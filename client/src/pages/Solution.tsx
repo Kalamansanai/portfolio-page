@@ -1,5 +1,11 @@
-import React from "react";
-import { Box, Grid, Hidden, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  useMediaQuery,
+  useTheme,
+  Divider,
+} from "@mui/material";
 import { textColor } from "../config";
 import { ISolution } from "../types";
 import contentsJson from "../data/solution_content.json";
@@ -11,7 +17,11 @@ export default function Solution() {
   return (
     <Grid container justifyContent="center" alignItems="center">
       {contentList.map((solution: ISolution, index: number) => (
-        <SolutionBox key={solution.title + index} solution={solution} index={index} />
+        <SolutionBox
+          key={solution.title + index}
+          solution={solution}
+          index={index}
+        />
       ))}
     </Grid>
   );
@@ -23,36 +33,111 @@ type Props = {
 };
 
 function SolutionBox({ solution, index }: Props) {
+  const theme = useTheme();
+  const contentList: ISolution[] = contentsJson;
+  const isXSmall = useMediaQuery("(max-width:768px)");
+  const isMiddle = index === Math.floor(contentList.length / 2);
+  const isLast = index === contentList.length - 1;
+
   return (
-    <Grid container justifyContent="center" alignItems="center" spacing={0}>
-      {/* Render Image for xs screens and even indices on larger screens */}
-      {(index % 2 === 0 || !solution.text) && (
-        <Grid item xs={12} sm={6}>
-          <Box textAlign="center" p={2} style={{ height: 200, overflow: "hidden" }}>
-            {solution.imageSrc && getImageByName(solution.imageSrc)}
-          </Box>
-        </Grid>
+    <Grid
+      container
+      justifyContent="center"
+      alignItems="stretch"
+      spacing={2}
+      style={{ display: "flex" }}
+    >
+      {isXSmall && (
+        <>
+          <Grid item xs={12}>
+            <Box textAlign="center" p={2} style={{ height: 200 }}>
+              {solution.imageSrc && getImageByName(solution.imageSrc)}
+            </Box>
+          </Grid>
+          <Grid item xs={12}>
+            <Box textAlign="center" p={2}>
+              <Typography variant="h4" color={textColor}>
+                {solution.title}
+              </Typography>
+              <Typography
+                variant="body1"
+                color={textColor}
+                textAlign={"justify"}
+              >
+                {solution.text}
+              </Typography>
+            </Box>
+          </Grid>
+        </>
       )}
-
-      {/* Always render Text for all screen sizes */}
-      <Grid item xs={12} sm={6}>
-        <Box textAlign="center" p={2}>
-          <Typography variant="h4" color={textColor}>
-            {solution.title}
-          </Typography>
-          <Typography variant="body1" color={textColor} textAlign={"justify"}>
-            {solution.text}
-          </Typography>
-        </Box>
-      </Grid>
-
-      {/* For larger screens: Render Image on odd indices */}
-      {index % 2 === 1 && window.innerWidth > 600 && (
-        <Grid item sm={6}>
-          <Box textAlign="center" p={2} style={{ height: 200, overflow: "hidden" }}>
-            {solution.imageSrc && getImageByName(solution.imageSrc)}
-          </Box>
-        </Grid>
+      {!isXSmall && (
+        <>
+          <Grid item sm={5}>
+            {index % 2 === 0 ? (
+              <Box
+                textAlign="center"
+                p={2}
+                style={{ height: 300, overflow: "hidden" }}
+              >
+                {solution.imageSrc && getImageByName(solution.imageSrc)}
+              </Box>
+            ) : (
+              <Box textAlign="center" p={2}>
+                <Typography variant="h4" color={textColor}>
+                  {solution.title}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color={textColor}
+                  textAlign={"justify"}
+                >
+                  {solution.text}
+                </Typography>
+              </Box>
+            )}
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={1}
+            container
+            justifyContent="center"
+            alignItems="stretch"
+          >
+            <div
+              style={{
+                width: "2px",
+                background: isMiddle
+                  ? "#0000ff"
+                  : isLast
+                  ? "linear-gradient( #0000ff, #1EAEFF)"
+                  : "linear-gradient(#1EAEFF, #0000ff)",
+                height: "100%",
+                margin: "0 auto",
+              }}
+            />
+          </Grid>
+          <Grid item sm={5}>
+            {index % 2 === 0 ? (
+              <Box textAlign="center" p={2}>
+                <Typography variant="h4" color={textColor}>
+                  {solution.title}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color={textColor}
+                  textAlign={"justify"}
+                >
+                  {solution.text}
+                </Typography>
+              </Box>
+            ) : (
+              <Box p={2} justifyContent={"center"} style={{ height: 300 }}>
+                {solution.imageSrc && getImageByName(solution.imageSrc)}
+              </Box>
+            )}
+          </Grid>
+        </>
       )}
     </Grid>
   );
