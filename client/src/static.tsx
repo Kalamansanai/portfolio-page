@@ -1,10 +1,6 @@
 //@ts-ignore
 import placeholder from "./images/placeholder.png";
 //@ts-ignore
-import plm_img from "./images/plm.png";
-//@ts-ignore
-import cm_img from "./images/cm.png";
-//@ts-ignore
 import smartCameraImage from "./images/smart_camera4.png";
 //@ts-ignore
 import cvImage from "./images/cv4.png";
@@ -18,12 +14,6 @@ import ContactUs from "./pages/ContactUs";
 import Title from "./pages/Title";
 
 const images: { [name: string]: JSX.Element } = {
-  plm_img: (
-    <img height="30%" src={plm_img} style={{ border: "2px solid black" }} />
-  ),
-  cm_img: (
-    <img height="30%" src={cm_img} style={{ border: "2px solid black" }} />
-  ),
   solution_smart_camera: <img height="90%" src={smartCameraImage} />,
   solution_cv: <img height="90%" src={cvImage} />,
   solution_design: <img height="90%" src={desing} />,

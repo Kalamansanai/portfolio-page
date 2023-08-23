@@ -1,23 +1,36 @@
-import { Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Collapse,
+  Grid,
+  Typography,
+  styled,
+  useMediaQuery,
+  Tooltip,
+} from "@mui/material";
 import { textColor } from "../config";
 import { IProject } from "../types";
 import projectsJson from "../data/projects.json";
-import { getImageByName } from "../static";
+import { useState } from "react";
+import IconButton, { IconButtonProps } from "@mui/material/IconButton";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function Projects() {
   const projects: IProject[] = projectsJson;
-  const isMobile = useMediaQuery("(max-width:800px)");
   const align = "flex-start";
-  const height = isMobile ? "200vh" : "100vh";
 
   return (
     <Grid
       display="flex"
       flexDirection="column"
       alignItems="center"
-      sx={{ height: height, width: "100vw" }}
+      justifyContent="center"
+      sx={{ minHeight: "100vh", width: "100vw" }}
     >
-      <Typography variant="h2" color="white" sx={{ marginTop: "50px" }}>
+      <Typography variant="h2" color="white" sx={{ marginTop: "20px", marginBottom: "70px" }}>
         Munkáink
       </Typography>
       <Grid
@@ -26,7 +39,8 @@ export default function Projects() {
         justifyContent="space-around"
         alignItems={align}
         flexWrap="wrap"
-        sx={{ height: "100%", width: "100%", margin: "10px" }}
+        gap={5}
+        sx={{ height: "100%", width: "100%" }}
       >
         {projects.map((project) => (
           <Project project={project} />
@@ -41,36 +55,71 @@ type Props = {
 };
 
 function Project({ project }: Props) {
-  const theme = useTheme();
-  const isMobile = useMediaQuery("(max-width:800px)");
   const isBelow1000 = useMediaQuery("max-width:800px");
-  const height = isMobile ? "45%" : "80%";
-  const width = isMobile ? "80%" : "40%";
+  const isXSmall = useMediaQuery("(max-width:768px)");
   const titleSize = isBelow1000 ? "h6" : "h4";
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
+  interface ExpandMoreProps extends IconButtonProps {
+    expand: boolean;
+  }
+
+  const ExpandMore = styled((props: ExpandMoreProps) => {
+    const { expand, ...other } = props;
+    return <IconButton {...other} />;
+  })(({ theme, expand }) => ({
+    transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
+  }));
 
   return (
-    <Grid
-      key={project.title}
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        height: height,
-        width: width,
-        minWidth: "480px",
-        borderRadius: "10px",
-        backgroundColor: textColor,
-        // border: "5px solid red",
-        overflow: "auto",
-      }}
-    >
-      <Typography variant={titleSize} sx={{ margin: "10px" }}>
-        {project.title}
-      </Typography>
-      <Typography variant="body1" sx={{ margin: "10px" }}>
-        {project.text}
-      </Typography>
-      {getImageByName(project.imgName)}
-    </Grid>
+    <Tooltip title={expanded ? "Click to close." : "Click to expand."} placement="top">
+      <Card
+        sx={{
+          maxWidth: isXSmall ? "400px" : "600px",
+          borderRadius: "10px",
+          backgroundColor: textColor,
+          overflow: "hidden",
+          display: "flex",
+        }}
+      >
+        <CardActionArea onClick={handleExpandClick}>
+          <CardMedia
+            component="img"
+            image={`/images/${project.imgName}.png`}
+            alt={`${project.title} image`}
+            sx={{
+              width: "100%",
+              height: "auto",
+              objectFit: "contain",
+            }}
+          />
+          <CardContent>
+            <Typography gutterBottom variant={titleSize} component="div">
+              {project.title}
+            </Typography>
+          </CardContent>
+          <CardActions disableSpacing>
+            <ExpandMore expand={expanded} aria-expanded={expanded} aria-label="show more">
+              <ExpandMoreIcon sx={{ color: "#0000ff" }} />
+            </ExpandMore>
+          </CardActions>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent>
+              <Typography textAlign={"justify"} variant="body2">
+                {project.text}
+              </Typography>
+            </CardContent>
+          </Collapse>
+        </CardActionArea>
+      </Card>
+    </Tooltip>
   );
 }
