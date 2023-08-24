@@ -10,6 +10,7 @@ import {
   styled,
   useMediaQuery,
   Tooltip,
+  Box,
 } from "@mui/material";
 import { textColor } from "../config";
 import { IProject } from "../types";
@@ -23,30 +24,49 @@ export default function Projects() {
   const align = "flex-start";
 
   return (
-    <Grid
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      sx={{ minHeight: "100vh", width: "100vw" }}
+    <Box
+      sx={{
+        backgroundImage: `url('/images/project_bg.png')`,
+        backgroundPosition: "center",
+        backgroundSize: "100% 100%",
+        backgroundRepeat: "no-repeat",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
     >
-      <Typography variant="h2" color="white" sx={{ marginTop: "20px", marginBottom: "70px" }}>
-        Munkáink
-      </Typography>
       <Grid
+        style={{
+          minHeight: "100vh",
+          minWidth: "100vw",
+        }}
         display="flex"
-        flexDirection="row"
-        justifyContent="space-around"
-        alignItems={align}
-        flexWrap="wrap"
-        gap={5}
-        sx={{ height: "100%", width: "100%" }}
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
       >
-        {projects.map((project) => (
-          <Project project={project} />
-        ))}
+        <Typography
+          variant="h2"
+          color="white"
+          sx={{ marginTop: "20px", marginBottom: "70px" }}
+        >
+          Munkáink
+        </Typography>
+        <Grid
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-around"
+          alignItems={align}
+          flexWrap="wrap"
+          gap={5}
+          sx={{ height: "100%", width: "100%" }}
+        >
+          {projects.map((project) => (
+            <Project project={project} />
+          ))}
+        </Grid>
       </Grid>
-    </Grid>
+    </Box>
   );
 }
 
@@ -80,7 +100,10 @@ function Project({ project }: Props) {
   }));
 
   return (
-    <Tooltip title={expanded ? "Click to close." : "Click to expand."} placement="top">
+    <Tooltip
+      title={expanded ? "Click to close." : "Click to expand."}
+      placement="top"
+    >
       <Card
         sx={{
           maxWidth: isXSmall ? "400px" : "600px",
@@ -107,7 +130,11 @@ function Project({ project }: Props) {
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
-            <ExpandMore expand={expanded} aria-expanded={expanded} aria-label="show more">
+            <ExpandMore
+              expand={expanded}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
               <ExpandMoreIcon sx={{ color: "#0000ff" }} />
             </ExpandMore>
           </CardActions>
