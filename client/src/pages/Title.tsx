@@ -35,12 +35,7 @@ export default function Title() {
       >
         Okos kamerás monitorzó rendszerek
       </Typography>
-      <img
-        src={slideImages[imageIndex]}
-        height={"80%"}
-        width={"80%"}
-        style={{ marginTop: "80px" }}
-      />
+      <img src={slideImages[imageIndex]} height={"80%"} width={"80%"} style={{ marginTop: "80px" }} />
       <Box
         display="flex"
         flexDirection="row"
@@ -49,7 +44,7 @@ export default function Title() {
         sx={{ width: "80%" }}
       >
         {slideImages.map((slide, index) => (
-          <Button onClick={() => setImageIndex(index)}>
+          <Button key={index} onClick={() => setImageIndex(index)}>
             {imageIndex === index ? "X" : "O"}
           </Button>
         ))}
