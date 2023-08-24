@@ -13,11 +13,11 @@ import {
   Box,
 } from "@mui/material";
 import { textColor } from "../config";
-import { IProject } from "../types";
 import projectsJson from "../data/projects.json";
 import { useState } from "react";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { IProject, Props } from "../types";
 
 export default function Projects() {
   const projects: IProject[] = projectsJson;
@@ -45,11 +45,7 @@ export default function Projects() {
         alignItems="center"
         justifyContent="center"
       >
-        <Typography
-          variant="h2"
-          color="white"
-          sx={{ marginTop: "20px", marginBottom: "70px" }}
-        >
+        <Typography variant="h2" color="white" sx={{ marginTop: "20px", marginBottom: "70px" }}>
           Munkáink
         </Typography>
         <Grid
@@ -69,10 +65,6 @@ export default function Projects() {
     </Box>
   );
 }
-
-type Props = {
-  project: IProject;
-};
 
 function Project({ project }: Props) {
   const isBelow1000 = useMediaQuery("max-width:800px");
@@ -100,10 +92,7 @@ function Project({ project }: Props) {
   }));
 
   return (
-    <Tooltip
-      title={expanded ? "Click to close." : "Click to expand."}
-      placement="top"
-    >
+    <Tooltip title={expanded ? "Click to close." : "Click to expand."} placement="top">
       <Card
         sx={{
           maxWidth: isXSmall ? "400px" : "600px",
@@ -130,11 +119,7 @@ function Project({ project }: Props) {
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
-            <ExpandMore
-              expand={expanded}
-              aria-expanded={expanded}
-              aria-label="show more"
-            >
+            <ExpandMore expand={expanded} aria-expanded={expanded} aria-label="show more">
               <ExpandMoreIcon sx={{ color: "#0000ff" }} />
             </ExpandMore>
           </CardActions>
