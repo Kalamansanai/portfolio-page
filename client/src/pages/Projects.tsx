@@ -18,6 +18,7 @@ import { useState } from "react";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { IProject, Props } from "../types";
+import Tilt from "react-parallax-tilt";
 
 export default function Projects() {
   const projects: IProject[] = projectsJson;
@@ -45,7 +46,11 @@ export default function Projects() {
         alignItems="center"
         justifyContent="center"
       >
-        <Typography variant="h2" color="white" sx={{ marginTop: "20px", marginBottom: "70px" }}>
+        <Typography
+          variant="h2"
+          color="white"
+          sx={{ marginTop: "20px", marginBottom: "70px" }}
+        >
           Munkáink
         </Typography>
         <Grid
@@ -57,9 +62,9 @@ export default function Projects() {
           gap={5}
           sx={{ height: "100%", width: "100%" }}
         >
-        {projects.map((project) => (
-          <Project key={project.title} project={project} />
-        ))}
+          {projects.map((project) => (
+            <Project key={project.title} project={project} />
+          ))}
         </Grid>
       </Grid>
     </Box>
@@ -71,6 +76,9 @@ function Project({ project }: Props) {
   const isXSmall = useMediaQuery("(max-width:768px)");
   const titleSize = isBelow1000 ? "h6" : "h4";
   const [expanded, setExpanded] = useState(false);
+  const tiltSettings = expanded
+    ? { tiltMaxAngleX: 0, tiltMaxAngleY: 0, scale: 1 }
+    : { tiltMaxAngleX: 15, tiltMaxAngleY: 15, scale: 1.05 };
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -92,7 +100,7 @@ function Project({ project }: Props) {
   }));
 
   return (
-    <Tooltip title={expanded ? "Click to close." : "Click to expand."} placement="top">
+    <Tilt {...tiltSettings}>
       <Card
         sx={{
           maxWidth: isXSmall ? "400px" : "600px",
@@ -129,11 +137,16 @@ function Project({ project }: Props) {
                 alignItems: "center",
                 display: "flex",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.1)")}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.1)")
+              }
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
             >
               <ExpandMoreIcon
-                sx={{ color: "#0000ff", transform: expanded ? "rotate(180deg)" : "rotate(0deg)" }}
+                sx={{
+                  color: "#0000ff",
+                  transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
+                }}
               />
             </div>
           </CardActions>
@@ -146,6 +159,6 @@ function Project({ project }: Props) {
           </Collapse>
         </CardActionArea>
       </Card>
-    </Tooltip>
+    </Tilt>
   );
 }
