@@ -1,13 +1,9 @@
 // ScrollToTopButton.tsx
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Box, Fab, Zoom, useScrollTrigger } from "@mui/material";
-import React from "react";
+import { ScrollTopProps } from "../types";
 
-type Props = {
-  setTargetIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
-};
-
-const ScrollToTopButton = ({ setTargetIndex }: Props) => {
+const ScrollToTopButton = ({ setTargetIndex }: ScrollTopProps) => {
   const trigger = useScrollTrigger({ disableHysteresis: true });
 
   const scrollToTop = () => {

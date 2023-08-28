@@ -1,24 +1,10 @@
 import { Box, Button, useMediaQuery } from "@mui/material";
-import { IPage } from "../types";
+import { IPage, NavbarProps } from "../types";
 import { useState } from "react";
 //@ts-ignore
 // import backgroundImage from "../images/navbar4.png";
 
-type Props = {
-  pages: IPage[];
-  targetIndex: number | undefined;
-  setTargetIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
-  scroll: boolean;
-  setScroll: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-export default function Navbar({
-  pages,
-  targetIndex,
-  setTargetIndex,
-  scroll,
-  setScroll,
-}: Props) {
+export default function Navbar({ pages, targetIndex, setTargetIndex, scroll, setScroll }: NavbarProps) {
   const [color, setColor] = useState("#2a282a");
   const text_color = "#e5e5e5";
 
@@ -50,7 +36,6 @@ export default function Navbar({
               onClick={() => {
                 setTargetIndex(index);
                 setScroll(!scroll);
-                // setColor("white");
               }}
               sx={{
                 backgroundColor: targetIndex === index ? "grey" : "#2a282a",

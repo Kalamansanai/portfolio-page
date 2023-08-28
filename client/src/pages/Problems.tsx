@@ -1,7 +1,7 @@
 import { Box, Grid, Link, Typography, useMediaQuery } from "@mui/material";
 import "../App.css";
 import { useState } from "react";
-import { IProblem } from "../types";
+import { IProblem, ProblemProps } from "../types";
 import { backgroundColor, textColor } from "../config";
 import React from "react";
 import { Card as MuiCard, CardContent } from "@mui/material";
@@ -151,11 +151,7 @@ export default function Problems() {
                 >
                   {activeTiltle}
                 </Typography>
-                <Typography
-                  variant="h5"
-                  color={backgroundColor}
-                  sx={{ textAlign: "justify" }}
-                >
+                <Typography variant="h5" color={backgroundColor} sx={{ textAlign: "justify" }}>
                   {content}
                 </Typography>
               </CardContent>
@@ -167,15 +163,7 @@ export default function Problems() {
   );
 }
 
-type Props = {
-  problem: IProblem;
-  setContent: React.Dispatch<React.SetStateAction<string | null>>;
-  isLast: boolean;
-  isActive: boolean;
-  onClick: () => void;
-};
-
-function Card({ problem, setContent, isLast, isActive, onClick }: Props) {
+function Card({ problem, setContent, isLast, isActive, onClick }: ProblemProps) {
   const isMobile = useMediaQuery("(max-width:800px)");
   const variant = isMobile ? "body1" : "h5";
   const padding = isMobile ? "2px" : "20px";
@@ -206,8 +194,7 @@ function Card({ problem, setContent, isLast, isActive, onClick }: Props) {
           flexGrow: 1,
         }}
       >
-        {problem.problem}{" "}
-        {isActive && <ArrowBackIosRoundedIcon sx={{ color: "#F5F5F5" }} />}
+        {problem.problem} {isActive && <ArrowBackIosRoundedIcon sx={{ color: "#F5F5F5" }} />}
       </Typography>
     </Box>
   );

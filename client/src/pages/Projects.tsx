@@ -10,49 +10,61 @@ import {
   styled,
   useMediaQuery,
   Tooltip,
+  Box,
 } from "@mui/material";
 import { textColor } from "../config";
-import { IProject } from "../types";
 import projectsJson from "../data/projects.json";
 import { useState } from "react";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { IProject, Props } from "../types";
 
 export default function Projects() {
   const projects: IProject[] = projectsJson;
   const align = "flex-start";
 
   return (
-    <Grid
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      sx={{ minHeight: "100vh", width: "100vw" }}
+    <Box
+      sx={{
+        backgroundImage: `url('/images/project_bg.png')`,
+        backgroundPosition: "center",
+        backgroundSize: "100% 100%",
+        backgroundRepeat: "no-repeat",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
     >
-      <Typography variant="h2" color="white" sx={{ marginTop: "20px", marginBottom: "70px" }}>
-        Munkáink
-      </Typography>
       <Grid
+        style={{
+          minHeight: "100vh",
+          minWidth: "100vw",
+        }}
         display="flex"
-        flexDirection="row"
-        justifyContent="space-around"
-        alignItems={align}
-        flexWrap="wrap"
-        gap={5}
-        sx={{ height: "100%", width: "100%" }}
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
       >
+        <Typography variant="h2" color="white" sx={{ marginTop: "20px", marginBottom: "70px" }}>
+          Munkáink
+        </Typography>
+        <Grid
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-around"
+          alignItems={align}
+          flexWrap="wrap"
+          gap={5}
+          sx={{ height: "100%", width: "100%" }}
+        >
         {projects.map((project) => (
           <Project key={project.title} project={project} />
         ))}
+        </Grid>
       </Grid>
-    </Grid>
+    </Box>
   );
 }
-
-type Props = {
-  project: IProject;
-};
 
 function Project({ project }: Props) {
   const isBelow1000 = useMediaQuery("max-width:800px");
