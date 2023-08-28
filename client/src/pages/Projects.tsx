@@ -57,9 +57,9 @@ export default function Projects() {
           gap={5}
           sx={{ height: "100%", width: "100%" }}
         >
-          {projects.map((project) => (
-            <Project project={project} />
-          ))}
+        {projects.map((project) => (
+          <Project key={project.title} project={project} />
+        ))}
         </Grid>
       </Grid>
     </Box>
@@ -119,9 +119,23 @@ function Project({ project }: Props) {
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
-            <ExpandMore expand={expanded} aria-expanded={expanded} aria-label="show more">
-              <ExpandMoreIcon sx={{ color: "#0000ff" }} />
-            </ExpandMore>
+            <div
+              style={{
+                marginLeft: "auto",
+                transition: "background-color 0.3s, transform 0.3s",
+                borderRadius: "50%",
+                padding: "8px",
+                justifyContent: "center",
+                alignItems: "center",
+                display: "flex",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "rgba(0, 0, 0, 0.1)")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "")}
+            >
+              <ExpandMoreIcon
+                sx={{ color: "#0000ff", transform: expanded ? "rotate(180deg)" : "rotate(0deg)" }}
+              />
+            </div>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
