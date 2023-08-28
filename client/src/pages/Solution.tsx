@@ -1,38 +1,29 @@
-import {
-  Box,
-  Grid,
-  Typography,
-  useMediaQuery,
-  useTheme,
-  Divider,
-} from "@mui/material";
+import { Box, Grid, Typography, useMediaQuery, useTheme, Divider } from "@mui/material";
 import { textColor } from "../config";
-import { ISolution } from "../types";
+import { ISolution, SolutionProps } from "../types";
 import contentsJson from "../data/solution_content.json";
 import { getImageByName } from "../static";
+import BackgroundSVG from "../OtherComponents/BackgroundSVG";
 
 export default function Solution() {
   const contentList: ISolution[] = contentsJson;
 
   return (
     <Grid container justifyContent="center" alignItems="center">
+      <div style={{ position: "absolute", right: 0, zIndex: -1 }}>
+        <BackgroundSVG direction="right" />
+      </div>
+      <div style={{ position: "absolute", left: 0, zIndex: -1 }}>
+        <BackgroundSVG direction="left" />
+      </div>
       {contentList.map((solution: ISolution, index: number) => (
-        <SolutionBox
-          key={solution.title + index}
-          solution={solution}
-          index={index}
-        />
+        <SolutionBox key={solution.title + index} solution={solution} index={index} />
       ))}
     </Grid>
   );
 }
 
-type Props = {
-  solution: ISolution;
-  index: number;
-};
-
-function SolutionBox({ solution, index }: Props) {
+function SolutionBox({ solution, index }: SolutionProps) {
   const theme = useTheme();
   const contentList: ISolution[] = contentsJson;
   const isXSmall = useMediaQuery("(max-width:768px)");
@@ -40,13 +31,7 @@ function SolutionBox({ solution, index }: Props) {
   const isLast = index === contentList.length - 1;
 
   return (
-    <Grid
-      container
-      justifyContent="center"
-      alignItems="stretch"
-      spacing={2}
-      style={{ display: "flex" }}
-    >
+    <Grid container justifyContent="center" alignItems="stretch" spacing={2} style={{ display: "flex" }}>
       {isXSmall && (
         <>
           <Grid item xs={12}>
@@ -59,11 +44,7 @@ function SolutionBox({ solution, index }: Props) {
               <Typography variant="h4" color={textColor}>
                 {solution.title}
               </Typography>
-              <Typography
-                variant="body1"
-                color={textColor}
-                textAlign={"justify"}
-              >
+              <Typography variant="body1" color={textColor} textAlign={"justify"}>
                 {solution.text}
               </Typography>
             </Box>
@@ -74,11 +55,7 @@ function SolutionBox({ solution, index }: Props) {
         <>
           <Grid item sm={5}>
             {index % 2 === 0 ? (
-              <Box
-                textAlign="center"
-                p={2}
-                style={{ height: 300, overflow: "hidden" }}
-              >
+              <Box textAlign="center" p={2} style={{ height: 300, overflow: "hidden" }}>
                 {solution.imageSrc && getImageByName(solution.imageSrc)}
               </Box>
             ) : (
@@ -86,24 +63,13 @@ function SolutionBox({ solution, index }: Props) {
                 <Typography variant="h4" color={textColor}>
                   {solution.title}
                 </Typography>
-                <Typography
-                  variant="body1"
-                  color={textColor}
-                  textAlign={"justify"}
-                >
+                <Typography variant="body1" color={textColor} textAlign={"justify"}>
                   {solution.text}
                 </Typography>
               </Box>
             )}
           </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={1}
-            container
-            justifyContent="center"
-            alignItems="stretch"
-          >
+          <Grid item xs={12} sm={1} container justifyContent="center" alignItems="stretch">
             <div
               style={{
                 width: "2px",
@@ -123,11 +89,7 @@ function SolutionBox({ solution, index }: Props) {
                 <Typography variant="h4" color={textColor}>
                   {solution.title}
                 </Typography>
-                <Typography
-                  variant="body1"
-                  color={textColor}
-                  textAlign={"justify"}
-                >
+                <Typography variant="body1" color={textColor} textAlign={"justify"}>
                   {solution.text}
                 </Typography>
               </Box>

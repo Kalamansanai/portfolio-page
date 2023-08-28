@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRounded";
-import { textColor } from "../config";
+import { backgroundColor, textColor } from "../config";
 import teamJson from "../data/team.json";
 import { ITeamMember } from "../types";
 
@@ -51,9 +51,15 @@ function Team() {
 
   return (
     <Box
+      style={{
+        backgroundImage: `url('/images/team_bg.png')`,
+        backgroundPosition: "center",
+        backgroundSize: "100% 100%",
+        backgroundRepeat: "no-repeat",
+      }}
       sx={{
-        height: "100vh",
-        width: "100vw",
+        minHeight: "100vh",
+        minWidth: "100vw",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -123,15 +129,15 @@ function Team() {
           }}
         >
           {teamMembers.map((member, i) => (
-            <div key={i}>
-              <Paper>
+            <div key={i} style={{ background: "transparent" }}>
+              <Paper sx={{ background: "transparent", boxShadow: "none" }}>
                 <div
                   style={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
                     paddingBottom: "5px",
-                    backgroundColor: "#0c0c0c",
+                    background: "transparent",
                   }}
                 >
                   <img
