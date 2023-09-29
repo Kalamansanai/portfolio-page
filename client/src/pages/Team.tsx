@@ -10,16 +10,12 @@ import { ITeamMember } from "../types";
 function Team() {
   const teamMembers: ITeamMember[] = teamJson;
   const [currentIndex, setCurrentIndex] = useState(0);
-  const prevIndex =
-    (currentIndex - 1 + teamMembers.length) % teamMembers.length;
+  const prevIndex = (currentIndex - 1 + teamMembers.length) % teamMembers.length;
   const nextIndex = (currentIndex + 1) % teamMembers.length;
   const [autoPlayActive, setAutoPlayActive] = useState(true);
   const [isVisible, setIsVisible] = useState(true);
 
-  const handleChange = (
-    nextIndex: number | undefined,
-    previousIndex: number | undefined
-  ) => {
+  const handleChange = (nextIndex: number | undefined, previousIndex: number | undefined) => {
     if (nextIndex !== undefined) {
       setIsVisible(false);
       setTimeout(() => {
@@ -66,6 +62,7 @@ function Team() {
         alignItems: "center",
         opacity: isVisible ? 1 : 0,
         transition: "opacity 1s ease",
+        pt: "5rem",
       }}
     >
       <Typography variant="h4" sx={{ color: textColor, paddingBottom: "5px" }}>

@@ -33,6 +33,7 @@ export default function Projects() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        pt: "5rem",
       }}
     >
       <Grid
@@ -57,9 +58,9 @@ export default function Projects() {
           gap={5}
           sx={{ height: "100%", width: "100%" }}
         >
-        {projects.map((project) => (
-          <Project key={project.title} project={project} />
-        ))}
+          {projects.map((project) => (
+            <Project key={project.title} project={project} />
+          ))}
         </Grid>
       </Grid>
     </Box>

@@ -15,7 +15,7 @@ function ContactUs() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box style={{ height: "100vh", display: "flex", flexDirection: "row" }}>
+      <Box style={{ height: "100vh", display: "flex", flexDirection: "row" }} sx={{ pt: "5rem" }}>
         <Box
           sx={{
             width: "20%",
@@ -48,10 +48,7 @@ function ContactUs() {
           <Box display="flex" alignItems="center" mt={2}>
             <EmailSharpIcon sx={{ color: "blue" }} fontSize="large" />
             <Typography ml={2}>
-              <a
-                href="mailto:ipar4@mail.bme.hu"
-                style={{ color: "#e5e5e5", textDecoration: "none" }}
-              >
+              <a href="mailto:ipar4@mail.bme.hu" style={{ color: "#e5e5e5", textDecoration: "none" }}>
                 ipar4@mail.bme.hu
               </a>
             </Typography>
@@ -59,10 +56,7 @@ function ContactUs() {
           <Box display="flex" alignItems="center" mt={2}>
             <PhoneSharpIcon sx={{ color: "blue" }} fontSize="large" />
             <Typography ml={2}>
-              <a
-                href="tel:+36306968492"
-                style={{ color: "#e5e5e5", textDecoration: "none" }}
-              >
+              <a href="tel:+36306968492" style={{ color: "#e5e5e5", textDecoration: "none" }}>
                 +36 30 696 8492
               </a>
             </Typography>
@@ -130,11 +124,7 @@ function ContactUs() {
             variant="outlined"
             style={{ marginTop: "20px" }}
           />
-          <Button
-            variant="contained"
-            color="blue"
-            style={{ marginTop: "20px" }}
-          >
+          <Button variant="contained" color="blue" style={{ marginTop: "20px" }}>
             Send Message
           </Button>
         </Box>

@@ -9,7 +9,7 @@ export default function Solution() {
   const contentList: ISolution[] = contentsJson;
 
   return (
-    <Grid container justifyContent="center" alignItems="center">
+    <Grid container justifyContent="center" alignItems="center" pt={"5.5rem"}>
       <div style={{ position: "absolute", right: 0, zIndex: -1 }}>
         <BackgroundSVG direction="right" />
       </div>
