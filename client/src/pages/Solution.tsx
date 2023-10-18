@@ -9,7 +9,7 @@ export default function Solution() {
   const contentList: ISolution[] = contentsJson;
 
   return (
-    <Grid container justifyContent="center" alignItems="center">
+    <Grid container justifyContent="center" alignItems="center" pt={"5.5rem"}>
       <div style={{ position: "absolute", right: 0, zIndex: -1 }}>
         <BackgroundSVG direction="right" />
       </div>
@@ -31,11 +31,11 @@ function SolutionBox({ solution, index }: SolutionProps) {
   const isLast = index === contentList.length - 1;
 
   return (
-    <Grid container justifyContent="center" alignItems="stretch" spacing={2} style={{ display: "flex" }}>
+    <Grid container justifyContent="center" alignItems="center" spacing={2} style={{ display: "flex" }}>
       {isXSmall && (
         <>
           <Grid item xs={12}>
-            <Box textAlign="center" p={2} style={{ height: 200 }}>
+            <Box textAlign="center" p={2}>
               {solution.imageSrc && getImageByName(solution.imageSrc)}
             </Box>
           </Grid>
@@ -55,7 +55,7 @@ function SolutionBox({ solution, index }: SolutionProps) {
         <>
           <Grid item sm={5}>
             {index % 2 === 0 ? (
-              <Box textAlign="center" p={2} style={{ height: 300, overflow: "hidden" }}>
+              <Box textAlign="center" p={2}>
                 {solution.imageSrc && getImageByName(solution.imageSrc)}
               </Box>
             ) : (
@@ -69,7 +69,7 @@ function SolutionBox({ solution, index }: SolutionProps) {
               </Box>
             )}
           </Grid>
-          <Grid item xs={12} sm={1} container justifyContent="center" alignItems="stretch">
+          <Grid item xs={12} sm={1} container justifyContent="center" style={{ alignSelf: "stretch" }}>
             <div
               style={{
                 width: "2px",
@@ -94,7 +94,7 @@ function SolutionBox({ solution, index }: SolutionProps) {
                 </Typography>
               </Box>
             ) : (
-              <Box p={2} justifyContent={"center"} style={{ height: 300 }}>
+              <Box alignItems={"center"} justifyContent={"center"}>
                 {solution.imageSrc && getImageByName(solution.imageSrc)}
               </Box>
             )}

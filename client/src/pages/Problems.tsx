@@ -39,6 +39,7 @@ export default function Problems() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        pt: "5rem",
       }}
     >
       <Box

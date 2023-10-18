@@ -96,4 +96,7 @@ export type NavbarProps = {
   setTargetIndex: React.Dispatch<React.SetStateAction<number | undefined>>;
   scroll: boolean;
   setScroll: React.Dispatch<React.SetStateAction<boolean>>;
+  sectionRefs: React.RefObject<HTMLDivElement>[];
+  isManualScroll: boolean;
+  setIsManualScroll: React.Dispatch<React.SetStateAction<boolean>>;
 };

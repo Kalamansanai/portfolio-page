@@ -23,6 +23,7 @@ export default function Title() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        pt: "5rem",
       }}
     >
       <Typography
