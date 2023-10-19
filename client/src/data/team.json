@@ -2,16 +2,21 @@
   {
     "name": "Bálint Dániel",
     "description": "Artificial Intelligence and Backend Developer",
-    "image": "/images/ipartk-333.png"
+    "image": "/images/ipartk-333.jpeg"
   },
   {
     "name": "Bór Milán",
     "description": "Software Developer and Project Manager",
-    "image": "/images/ipartk-339.png"
+    "image": "/images/ipartk-339.jpeg"
   },
   {
     "name": "Szabó Bálint",
     "description": "Frontend Developer and UX Designer",
-    "image": "/images/ipartk-360.png"
+    "image": "/images/ipartk-359.jpeg"
+  },
+  {
+    "name": "Tkalcec Péter",
+    "description": "Software Testing Engineer",
+    "image": "/images/ipartk-501.jpg"
   }
 ]

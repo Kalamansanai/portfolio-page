@@ -14,9 +14,15 @@ import ContactUs from "./pages/ContactUs";
 import Title from "./pages/Title";
 
 const images: { [name: string]: JSX.Element } = {
-  solution_smart_camera: <img style={{ maxWidth: "100%", height: "auto" }} src={smartCameraImage} />,
-  solution_cv: <img style={{ maxWidth: "100%", height: "auto" }} src={cvImage} />,
-  solution_design: <img style={{ maxWidth: "100%", height: "auto" }} src={desing} />,
+  solution_smart_camera: (
+    <img style={{ maxWidth: "100%", height: "auto" }} src={smartCameraImage} />
+  ),
+  solution_cv: (
+    <img style={{ maxWidth: "100%", height: "auto" }} src={cvImage} />
+  ),
+  solution_design: (
+    <img style={{ maxWidth: "100%", height: "auto" }} src={desing} />
+  ),
 };
 
 export function getImageByName(name: string) {
